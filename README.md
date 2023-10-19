@@ -1,1 +1,2 @@
-# EduApp-Learniverse
+# Learniverse
+
