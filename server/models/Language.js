@@ -18,7 +18,8 @@ const wordSchema = new Schema({
     required: true,
   },
   digraph: {
-    type: String,
+    type: Boolean,
+    required: true,
   },
 });
 
