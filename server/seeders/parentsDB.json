@@ -1,0 +1,18 @@
+[
+    {
+     "username":"HJones",
+     "parentFirstName": "Henry",
+     "parentLastName":"Jones",
+     "email":"hjones@test.com",
+     "password":"12345",
+     "subscribed":"true"
+    },
+    {
+        "username":"MDoe",
+        "parentFirstName": "Mary",
+        "parentLastName":"Doe",
+        "email":"mdoe@test.com",
+        "password":"12345",
+        "subscribed":"false"
+       }
+]

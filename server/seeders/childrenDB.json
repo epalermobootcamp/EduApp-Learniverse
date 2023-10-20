@@ -1,0 +1,22 @@
+[
+    {
+        "username":"fred",
+        "firstName":"Fred",
+        "lastName":"Jones",
+        "email":"fj@test.com",
+        "password":"1234",
+        "grade":"2",
+        "age":"7",
+        "score": []
+    },
+    {
+        "username":"jane",
+        "firstName":"Jane",
+        "lastName":"Doe",
+        "email":"jdoe@test.com",
+        "password":"1234",
+        "grade":"1",
+        "age":"6",
+        "score": []
+    }
+]
