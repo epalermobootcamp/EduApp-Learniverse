@@ -61,7 +61,7 @@ type Query {
 type Mutation {
     addParent(parentInput: ParentInput!): Parent
     addChild(addChildInput: AddChildInput!): Child
-    updateChild(updateChildInput: UpdateChildInput): Child
+    updateChild(updateChildInput: UpdateChildInput!): Child
     updateParent(parentInput: ParentInput!): Parent
 }
 
