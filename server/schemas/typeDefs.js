@@ -51,18 +51,19 @@ type Score {
 }
 
 type Query {
-    child(id: Int!): [Child]
+    child(id: String!): Child
     words: [Language]
-    parent(id: Int!): [Parent]
+    parent(id: String!): Parent
     animals: [Animal]
     score(id: Int!): [Score]
 }
 
 type Mutation {
-    addParent(parentInput: ParentInput!): Parent
-    addChild(addChildInput: AddChildInput!): Child
-    updateChild(updateChildInput: UpdateChildInput!): Child
+    addParent(parentInput: ParentInput!): Auth
+    addChild(addChildInput: AddChildInput!): Auth
     updateParent(parentInput: ParentInput!): Parent
+    updateChild(updateChildInput: UpdateChildInput!): Child
+    login(email: String!, password: String!): Auth
 }
 
 input ParentInput {
@@ -90,7 +91,6 @@ input UpdateChildInput {
 }
 `;
 
-//! Query for Score may be redundant because queries for Child should populate Score already.
 //Query child document by ID. If a parent document has multiple children it will query them one at a time by ID.
 //Query all word documents then filter a new array based on game settings? Then choose randomlly based on filtered array.
 //Query parent document by ID.
@@ -99,3 +99,5 @@ input UpdateChildInput {
 //Add parent document. ParentInput has all fields required.
 //Add child document. If a child makes an account on their own only username and password is expected.
 //Update child document. A parent can choose to fill in their child's data so the input includes non-required fields.
+ //sign-up returns account document and token
+ //! Line 66 Auth has a document and a token. How??
