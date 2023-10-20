@@ -28,7 +28,7 @@ type Parent {
     email: String!
     password: String!
     subscribed: Boolean!
-    children: [Children]
+    children: [Child]
 }
 
 type Animal {
