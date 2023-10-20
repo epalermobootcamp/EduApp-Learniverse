@@ -27,7 +27,7 @@ type Parent {
     parentLastName: String!
     email: String!
     password: String!
-    subscribed: Boolean
+    subscribed: Boolean!
     children: [Children]
 }
 
@@ -62,6 +62,7 @@ type Mutation {
     addParent(parentInput: ParentInput!): Parent
     addChild(addChildInput: AddChildInput!): Child
     updateChild(updateChildInput: UpdateChildInput): Child
+    updateParent(parentInput: ParentInput!): Parent
 }
 
 input ParentInput {
@@ -70,7 +71,7 @@ input ParentInput {
     parentLastName: String!
     email: String!
     password: String!
-    subscribed: Boolean
+    subscribed: Boolean!
 }
 
 input AddChildInput {
@@ -89,6 +90,7 @@ input UpdateChildInput {
 }
 `;
 
+//! Query for Score may be redundant because queries for Child should populate Score already.
 //Query child document by ID. If a parent document has multiple children it will query them one at a time by ID.
 //Query all word documents then filter a new array based on game settings? Then choose randomlly based on filtered array.
 //Query parent document by ID.
