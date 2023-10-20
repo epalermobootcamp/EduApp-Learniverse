@@ -40,7 +40,6 @@ type Animal {
     covering: String!
 }
 
-//! Must include the virtuals to allow client to request these computed values when querying Score objects.
 type Score {
     _id: ID!
     science: [Number]
@@ -50,4 +49,42 @@ type Score {
     last10MathScores: Int
     last10LangScores: Int
 }
-`
+
+type Query {
+    child(id: Int!): [Child]
+    words: [Language]
+    parent(id: Int!): [Parent]
+    animals: [Animal]
+    score(id: Int!): [Score]
+}
+
+type Mutation {
+    addParent(parentInput: ParentInput!): Parent
+    addChild(addChildInput: AddChildInput!): Child
+    updateChild(updateChildInput: UpdateChildInput): Child
+}
+
+input ParentInput {
+    username: String!
+    parentFirstName: String!
+    parentLastName: String!
+    email: String!
+    password: String!
+    subscribed: Boolean
+}
+
+input AddChildInput {
+    username: String!
+    password: String!
+}
+
+input UpdateChildInput {
+    username: String!
+    firstName: String
+    lastName: String
+    email: String
+    password: String!
+    grade: Int
+    age: Int
+}
+`;
