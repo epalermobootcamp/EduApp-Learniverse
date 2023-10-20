@@ -55,7 +55,7 @@ type Query {
     words: [Language]
     parent(id: String!): Parent
     animals: [Animal]
-    score(id: Int!): [Score]
+    score(id: Int!): Score
 }
 
 type Mutation {
