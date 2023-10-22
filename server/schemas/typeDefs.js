@@ -91,13 +91,17 @@ input UpdateChildInput {
 }
 `;
 
-//Query child document by ID. If a parent document has multiple children it will query them one at a time by ID.
-//Query all word documents then filter a new array based on game settings? Then choose randomlly based on filtered array.
-//Query parent document by ID.
-//Query all animal documents. (Maybe filter which fields are included based on game settings? Logic to use fields done client side?)
-//Query score document by ID. Each child document hasOne score document.
-//Add parent document. ParentInput has all fields required.
-//Add child document. If a child makes an account on their own only username and password is expected.
-//Update child document. A parent can choose to fill in their child's data so the input includes non-required fields.
  //sign-up returns account document and token
- //! Line 66 Auth has a document and a token. How??
+ //! Line 66 Auth = document + token
+
+//Query.child = for a child to query their own score data
+//Query.words = for word game to query array of words to spell (filtered based on game settings)
+//Query.parent = for parent to query their children and their scores
+//Query.animals = for science game to query array of animals to render cards (filtered based on game settings)
+//!Query.score = I can't think of a reason for this one.
+
+//Mutation.addParent = 
+//Mutation.addChild =
+//Mutation.updateParent =
+//Mutation.updateChild =
+//Mutation.login =
