@@ -1,6 +1,11 @@
 const { Schema, model } = require("mongoose");
 
 const animalSchema = new Schema({
+  animal: {
+    type: indexedDB,String,
+    required: true,
+
+  }
   trophicLvl: {
     type: String,
     required: true,
