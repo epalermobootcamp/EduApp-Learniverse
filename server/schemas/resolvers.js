@@ -24,3 +24,5 @@ const resolvers = {
     animals: async (parent, {})
   },
 };
+
+module.exports = resolvers;
