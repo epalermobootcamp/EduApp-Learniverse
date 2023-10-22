@@ -91,6 +91,7 @@ input UpdateChildInput {
 }
 `;
 
+module.exports = typeDefs;
  //sign-up returns account document and token
  //! Line 66 Auth = document + token
 
