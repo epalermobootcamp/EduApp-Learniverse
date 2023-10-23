@@ -1,4 +1,4 @@
-function rollDice() {
+export function rollDice() {
   const randomNumber = Math.random();
 
   const min = 1;
@@ -8,7 +8,7 @@ function rollDice() {
   return roll;
 }
 
-function getRandomOperator() {
+export function getRandomOperator() {
   const randomNum = Math.random();
 
   if (randomNum < 1 / 3) {
@@ -20,7 +20,7 @@ function getRandomOperator() {
   }
 }
 
-function calculateAnswer(diceOne, diceTwo, operator) {
+export function calculateAnswer(diceOne, diceTwo, operator) {
   if (operator === "+") {
     return diceOne + diceTwo;
   } else if (operator === "-") {
@@ -43,7 +43,7 @@ if (randomOperator === "-" && diceRollOne < diceRollTwo) {
     // Swap the values to ensure the larger one is subtracted from the smaller one
     [diceRollOne, diceRollTwo] = [diceRollTwo, diceRollOne];
   }
-const correctAnswer = calculateAnswer(diceRollOne, diceRollTwo, randomOperator);
+  export const correctAnswer = calculateAnswer(diceRollOne, diceRollTwo, randomOperator);
 
 console.log(
   "Random Math Problem :",  
