@@ -95,7 +95,7 @@ input UserInput {
  }
 
  type Mutation {
-    # addAdult(adultInput: AdultInput!): Auth
+    # \\addAdult(adultInput: AdultInput!): Auth
     # addChild(addChildInput: AddChildInput!): Auth
     addUser(userInput: UserInput!): User
     updateAdult(adultInput: AdultInput!): Adult

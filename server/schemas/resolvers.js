@@ -1,4 +1,5 @@
 const { Adult, Child, User, Language, Animal, Score } = require("../models");
+const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
