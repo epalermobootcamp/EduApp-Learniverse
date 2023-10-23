@@ -31,7 +31,7 @@ const childSchema = new Schema({
   age: {
     type: Number,
   },
-  score: [scoreSchema],
+  score: [Score.schema],
 });
 
 const Child = model("Child", childSchema);

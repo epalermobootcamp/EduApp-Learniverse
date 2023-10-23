@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const Child = require("./Child.js");
-const Parent = require("./Adult.js");
+const Adult = require("./Adult.js");
 
 const usersSchema = new Schema({
   username: {
@@ -9,16 +9,12 @@ const usersSchema = new Schema({
     required: true,
   },
 
-  isParent: {
+  isAdult: {
     type: Boolean,
-    required: true,
-  },
-  id: {
-    type: String,
     required: true,
   },
 });
 
-const Users = model("Users", usersSchemaSchema);
+const Users = model("Users", usersSchema);
 
 module.exports = Users;

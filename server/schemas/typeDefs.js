@@ -11,6 +11,13 @@ type Child {
     score: [Score]
 }
 
+type Users {
+    _id: ID!
+    username: String!
+    isParent: Boolean!
+
+}
+
 type Language {
     _id: ID!
     word: String!
@@ -42,35 +49,20 @@ type Animal {
 
 type Score {
     _id: ID!
-    science: [Number]
-    language: [Number]
-    math: [Number]
+    animal: [Int]
+    language: [Int]
+    math: [Int]
     last10ScienceScores: Int
     last10MathScores: Int
     last10LangScores: Int
 }
 
-type Query {
-    child(id: String!): Child
-    words: [Language]
-    parent(id: String!): Parent
-    animals: [Animal]
-    score(id: Int!): Score
-}
 
-type Mutation {
-    addUser(userInput: UserInput!): User
-    addAdult(adultaddChildInput: AddChildInput!): Auth
-    updateAdult(adultInput: AdultInput!): Adult
-    updateChild(updateChildInput: UpdateChildInput!): Child
-    login(email: String!, password: String!): Auth
-    createCardMatch()
-}
 
 input AdultInput {
     username: String!
-    parentFirstName: String!
-    parentLastName: String!
+    adultFirstName: String!
+    adultLastName: String!
     email: String!
     password: String!
     subscribed: Boolean!
@@ -96,13 +88,30 @@ input UserInput {
     isAdult: Boolean!
     id: String!
 }
+ type Query {
+#    child(id: String!): Child
+#    words: [Language]
+   adult(id: String!): Adult
+#    animals: [Animal]
+    score(id: Int!): Score
+ }
+
+ type Mutation {
+        addUser(userInput: UserInput!): Users
+    #   addAdult(adultaddChildInput: AddChildInput!): Auth
+    # updateAdult(adultInput: AdultInput!): Adult
+    # updateChild(updateChildInput: UpdateChildInput!): Child
+    # login(email: String!, password: String!): Auth
+    # createCardMatch()
+    } 
+
 `;
 
 module.exports = typeDefs;
- //sign-up returns account document and token
- //! Line 66 Auth = document + token
+//sign-up returns account document and token
+//! Line 66 Auth = document + token
 
- //Query.child = for a child to query their own score data
+//Query.child = for a child to query their own score data
 //Query.words = for word game to query array of words to spell (filtered based on game settings)
 //Query.parent = for parent to query their children and their scores
 //Query.animals = for science game to query array of animals to render cards (filtered based on game settings)

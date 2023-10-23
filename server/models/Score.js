@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 const scoreSchema = new Schema({
-  science: {
+  animal: {
     type: [Number],
   },
   language: {
@@ -35,5 +35,7 @@ scoreSchema
   .get(calculateLast10Average("science"));
 scoreSchema.virtual("last10MathScores").get(calculateLast10Average("math"));
 scoreSchema.virtual("last10LangScores").get(calculateLast10Average("language"));
+
+const Score = model("Score", scoreSchema);
 
 module.exports = Score;
