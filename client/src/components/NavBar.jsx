@@ -33,7 +33,7 @@ function Navigation() {
             </li>
             <li className="nav-item">
                 <Link
-                    to="/spell"
+                    to="/spellGame"
                     className={currentPage === '/Resume' ? 'nav-link active' : 'nav-link'}
                 >
                     Guess the word
