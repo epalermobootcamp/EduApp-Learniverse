@@ -48,7 +48,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    adChild: async (parent, { username, password }) => {
+    addChild: async (parent, { username, password }) => {
       const child = await Child.create({ username, password });
       const token = signToken(user);
       return { token, user };
@@ -62,20 +62,21 @@ const resolvers = {
         return Child.findByIdAndUpdate(context.user.id, args, {
           new: true,
         });
-      } 
+      }
+    },
+    updateParent: async (parent, args, context) => {
+      if (context.user) {
+        return Parent.findByIdAndUpdate(context.user.id, args, {
+          new: true,
+        });
+      }
+    },
+    updateUser: async (parent, args, context) => {
+      if (context.user) {
+        return User.findByIdAndUpdate(context.user.id, args, { new: true });
+      }
+    },
   },
-  updateParent: async (parent, args, context) => {
-    if (context.user) {
-      return Parent.findByIdAndUpdate(context.user.id, args, {
-        new: true,
-      });
-    } 
-},
-updateUser: async (parent, args, context) => {
-  if (context.user) {
-    return User.findByIdAndUpdate(context.user.id,args, {new: true});
-  }
-},
 };
 
 module.exports = resolvers;
