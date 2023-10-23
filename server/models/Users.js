@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const Child = require("./Child.js");
-const Parent = require("./Parent.js");
+const Parent = require("./Adult.js");
 
 const usersSchema = new Schema({
   username: {

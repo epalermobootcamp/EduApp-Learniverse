@@ -1,0 +1,34 @@
+.card {
+    
+    border-radius: 1rem;
+    box-shadow: 0px 10px 8px #999;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+    background-color: var(--ws);
+    height: fit-content;
+    width: 100%;
+    max-width: 340px;
+}
+
+.cardImage {
+    object-fit: cover;
+    border-radius: 1rem 1rem 0 0;
+   
+}
+
+.cardTitle, 
+.cardDescription {
+    margin: 0.5rem 5%;
+}
+
+.cardBtn {
+text-align: center;
+width: 90%;
+border-radius: 5px; 
+padding: 0.5rem 1rem;
+background-color: var(--medBlue);
+color: var(--ws);
+text-decoration: none;
+margin: 0.5rem;
+}

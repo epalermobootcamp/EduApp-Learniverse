@@ -1,19 +1,19 @@
 const { Schema, model } = require("mongoose");
 const Child = require("./Child.js");
 
-const parentSchema = new Schema({
+const adultSchema = new Schema({
   username: {
     type: String,
     required: true,
     unique: true,
     trim: true,
   },
-  parentFirstName: {
+  adultFirstName: {
     type: String,
     required: true,
     trim: true,
   },
-  parentLastName: {
+  adultLastName: {
     type: String,
     required: true,
     trim: true,
@@ -38,6 +38,6 @@ const parentSchema = new Schema({
   ],
 });
 
-const Parent = model("Parent", parentSchema);
+const Adult = model("Adult", adultSchema);
 
-module.exports = Parent;
+module.exports = Adult;

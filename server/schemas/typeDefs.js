@@ -20,11 +20,11 @@ type Language {
     digraph: Boolean!
 }
 
-type Parent {
+type Adult {
     _id: ID!
     username: String!
-    parentFirstName: String!
-    parentLastName: String!
+    adultFirstName: String!
+    adultLastName: String!
     email: String!
     password: String!
     subscribed: Boolean!
@@ -60,15 +60,14 @@ type Query {
 
 type Mutation {
     addUser(userInput: UserInput!): User
-    addParent(parentInput: ParentInput!): Auth
-    addChild(addChildInput: AddChildInput!): Auth
-    updateParent(parentInput: ParentInput!): Parent
+    addAdult(adultaddChildInput: AddChildInput!): Auth
+    updateAdult(adultInput: AdultInput!): Adult
     updateChild(updateChildInput: UpdateChildInput!): Child
     login(email: String!, password: String!): Auth
     createCardMatch()
 }
 
-input ParentInput {
+input AdultInput {
     username: String!
     parentFirstName: String!
     parentLastName: String!
@@ -94,7 +93,7 @@ input UpdateChildInput {
 
 input UserInput {
     username: String!
-    isParent: Boolean!
+    isAdult: Boolean!
     id: String!
 }
 `;

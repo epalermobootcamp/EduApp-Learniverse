@@ -1,10 +1,10 @@
-const { Parent, Child, Language, Science, Score } = require("../models");
+const { Adult, Child, Language, Science, Score } = require("../models");
 
 const resolvers = {
   Query: {
-    parent: async (parent, args, context) => {
+    adult: async (parent, args, context) => {
       if (context.args.username) {
-        return Parent.findOne({ _id: context.user._id }).populate("children");
+        return Adult.findOne({ _id: context.user._id }).populate("children");
       }
       throw AuthenticationError;
     },
@@ -31,8 +31,8 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addParent: async (parent, { username, email, password }) => {
-      const parent = await Parent.create({ username, email, password });
+    addAdult: async (parent, { username, email, password }) => {
+      const parent = await Adult.create({ username, email, password });
       const token = signToken(user);
       return { token, user };
     },
@@ -64,9 +64,9 @@ const resolvers = {
         });
       }
     },
-    updateParent: async (parent, args, context) => {
+    updateAdult: async (parent, args, context) => {
       if (context.user) {
-        return Parent.findByIdAndUpdate(context.user.id, args, {
+        return Adult.findByIdAndUpdate(context.user.id, args, {
           new: true,
         });
       }
