@@ -76,6 +76,9 @@ const resolvers = {
         return User.findByIdAndUpdate(context.user.id, args, { new: true });
       }
     },
+    animals: async (parent,args) => {
+      return Animal.find()
+    }
   },
 };
 
