@@ -11,7 +11,7 @@ type Child {
     score: [Score]
 }
 
-type Users {
+type User {
     _id: ID!
     username: String!
     isParent: Boolean!
@@ -97,12 +97,11 @@ input UserInput {
  type Mutation {
     # addAdult(adultInput: AdultInput!): Auth
     # addChild(addChildInput: AddChildInput!): Auth
-    addUser(userInput: UserInput!): Users
+    addUser(userInput: UserInput!): User
     updateAdult(adultInput: AdultInput!): Adult
     updateChild(updateChildInput: UpdateChildInput!): Child
-    updateUser(userInput: UserInput!): Users
+    updateUser(userInput: UserInput!): User
     # login(email: String!, password: String!): Auth
-   
     } 
 
 `;

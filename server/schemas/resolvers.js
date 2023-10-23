@@ -1,4 +1,4 @@
-const { Adult, Child, Users, Language, Animal, Score } = require("../models");
+const { Adult, Child, User, Language, Animal, Score } = require("../models");
 
 const resolvers = {
   Query: {
@@ -37,7 +37,7 @@ const resolvers = {
     //   return { token, user };
     // },
     addUser: async (parent, { username, email, password }) => {
-      const user = await Users.create({ username, email, password });
+      const user = await User.create({ username, email, password });
       const token = signToken(user);
       return { token, user };
     },
@@ -57,7 +57,7 @@ const resolvers = {
     },
     updateUser: async (parent, args, context) => {
       if (context.user) {
-        return Users.findByIdAndUpdate(context.user.id, args, { new: true });
+        return User.findByIdAndUpdate(context.user.id, args, { new: true });
       }
     },
     // login: async (parent, { email, password }) => {
@@ -76,9 +76,6 @@ const resolvers = {
     //   const cardMatch = await cardMatch.create(args);
     //   return cardMatch;
     // },
-  //   animals: async (parent, args) => {
-  //     return Animal.find();
-  //   },
   },
 };
 
