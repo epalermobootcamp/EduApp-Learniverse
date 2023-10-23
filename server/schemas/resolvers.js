@@ -21,7 +21,9 @@ const resolvers = {
     words: async (parent,{letterCount}) => {
       return Language.find(params).sort({letterCount:1, word: 1});
     },
-    animals: async (parent, {})
+    animals: async (parent,args) => {
+      return Animal.find()
+    }
   },
 };
 
