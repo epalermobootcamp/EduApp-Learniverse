@@ -72,10 +72,6 @@ const resolvers = {
     //   const token = signToken(user);
     //   return { token, user };
     // },
-    // createCardMatch: async (parent, args) => {
-    //   const cardMatch = await cardMatch.create(args);
-    //   return cardMatch;
-    // },
   },
 };
 
