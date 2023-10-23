@@ -57,8 +57,6 @@ type Score {
     last10LangScores: Int
 }
 
-
-
 input AdultInput {
     username: String!
     adultFirstName: String!
@@ -89,20 +87,22 @@ input UserInput {
     id: String!
 }
  type Query {
-#    child(id: String!): Child
-#    words: [Language]
-   adult(id: String!): Adult
-#    animals: [Animal]
+    child(id: String!): Child
+    words: [Language]
+    adult(id: String!): Adult
+    animals: [Animal]
     score(id: Int!): Score
  }
 
  type Mutation {
-        addUser(userInput: UserInput!): Users
-    #   addAdult(adultaddChildInput: AddChildInput!): Auth
-    # updateAdult(adultInput: AdultInput!): Adult
-    # updateChild(updateChildInput: UpdateChildInput!): Child
+    # addAdult(adultInput: AdultInput!): Auth
+    # addChild(addChildInput: AddChildInput!): Auth
+    addUser(userInput: UserInput!): Users
+    updateAdult(adultInput: AdultInput!): Adult
+    updateChild(updateChildInput: UpdateChildInput!): Child
+    updateUser(userInput: UserInput!): Users
     # login(email: String!, password: String!): Auth
-    # createCardMatch()
+   
     } 
 
 `;
