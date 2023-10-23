@@ -32,7 +32,7 @@ const adultSchema = new Schema({
   },
   children: [
     {
-      type: mongoose.Schema.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Child",
     },
   ],
