@@ -1,5 +1,5 @@
 const { Adult, Child, User, Language, Animal, Score } = require("../models");
-const { signToken, AuthenticationError } = require('../utils/auth');
+const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -64,6 +64,33 @@ const resolvers = {
         return User.findByIdAndUpdate(context.user.id, args, { new: true });
       }
     },
+    updateMathScore: async (parent, { newMathScore }, context) => {
+      try {
+        if (!context.user) {
+          throw new Error("User not authenticated");
+        }
+
+        const { username } = context.user; // Assuming the username is available in the user object
+
+        // Find the child by username
+        const child = await Child.findOne({ username });
+
+        if (!child) {
+          throw new Error("Child not found");
+        }
+
+        // Update the math score
+        child.score.math.unshift(newMathScore);
+
+        // Save the updated child document
+        const updatedChild = await child.save();
+
+        return updatedChild;
+      } catch (error) {
+        throw new Error(`Failed to update math score: ${error.message}`);
+      }
+    },
+
     login: async (parent, { email, password }) => {
       // Look up the user by the provided email address. Since the `email` field is unique, we know that only one person will exist with that email
       const user = await User.findOne({ email });

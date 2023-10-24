@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { rollDice, getRandomOperator, calculateAnswer } from '../utils/math';
+import AuthService from '../utils/auth'
 
 const Math = () => {
   const [diceRollOne, setDiceRollOne] = useState(1);
@@ -9,6 +10,9 @@ const Math = () => {
   const [randomOperator, setRandomOperator] = useState('+');
   const [userAnswer, setUserAnswer] = useState('');
   const [correctAnswer, setCorrectAnswer] = useState(null);
+
+   // Define the GraphQL mutation
+   const [updateMathScore] = useMutation(UPDATE_MATH_SCORE_MUTATION);
 
   const handleRollDice = () => {
     const newDiceRollOne = rollDice();
@@ -24,7 +28,11 @@ const Math = () => {
   const handleCalculateAnswer = () => {
     const answer = calculateAnswer(diceRollOne, diceRollTwo, randomOperator);
     setCorrectAnswer(answer);
+
+    
   };
+
+  const token = AuthService.getToken();
 
   return (
     <div className="App">

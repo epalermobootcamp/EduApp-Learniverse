@@ -97,7 +97,7 @@ input UserInput {
     adult(id: String!): Adult
     animals: [Animal]
     score(id: Int!): Score
- }
+}
 
  type Mutation {
     addAdult(adultInput: AdultInput!): Auth
@@ -107,7 +107,8 @@ input UserInput {
     updateChild(updateChildInput: UpdateChildInput!): Child
     updateUser(userInput: UserInput!): User
     login(email: String!, password: String!): Auth
-    } 
+    updateMathScore(username: String!, newMathScore: Int!): Child
+} 
 
 `;
 
