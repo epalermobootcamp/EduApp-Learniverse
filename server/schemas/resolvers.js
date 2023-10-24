@@ -12,12 +12,12 @@ const resolvers = {
 
     child: async (parent, args, context) => {
       if (context.args.username) {
-        return Child.findOne({ _id: context.user._id }).populate("score");
+        return Child.findOne({ _id: context.user._id })
       }
       throw AuthenticationError;
     },
     score: async (parent, args) => {
-      return Child.findOne({ username }).populate("score");
+      return Child.findOne({ username })
     },
     words: async (parent, { letterCount }) => {
       return Language.find(params).sort({ letterCount: 1, word: 1 });
