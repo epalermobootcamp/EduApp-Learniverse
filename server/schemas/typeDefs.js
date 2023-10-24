@@ -105,14 +105,9 @@ input UserInput {
     words: [Language]
     adult(username: String!): Adult
     animals: [Animal]
-<<<<<<< HEAD
-    score(username: String!): Score
-}
-=======
     findAnimal(_id: ID!): Animal
     score(id: Int!): Score
  }
->>>>>>> main
 
  type Mutation {
     addAdult(adultInput: AdultInput!): Auth
