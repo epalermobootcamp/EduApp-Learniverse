@@ -11,24 +11,7 @@
     max-width: 340px;
 }
 
-.cardImage {
-    object-fit: cover;
-    border-radius: 1rem 1rem 0 0;
-   
-}
-
-.cardTitle, 
-.cardDescription {
+.cardTitle {
     margin: 0.5rem 5%;
 }
 
-.cardBtn {
-text-align: center;
-width: 90%;
-border-radius: 5px; 
-padding: 0.5rem 1rem;
-background-color: var(--medBlue);
-color: var(--ws);
-text-decoration: none;
-margin: 0.5rem;
-}
