@@ -7,7 +7,7 @@ import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Language from './pages/Language';
 import Math from './pages/Math';
-import Science from './pages/Science';
+import Animal from './pages/Animal';
 
 const router = createBrowserRouter([
   {
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         element: <Math />
       },{
         path: '/concentrationGame',
-        element: <Science />
+        element: <Animal/>
       },
     ]
   },
