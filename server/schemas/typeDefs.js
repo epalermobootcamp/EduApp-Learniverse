@@ -100,13 +100,13 @@ input UserInput {
  }
 
  type Mutation {
-    # addAdult(adultInput: AdultInput!): Auth
-    # addChild(addChildInput: AddChildInput!): Auth
+    addAdult(adultInput: AdultInput!): Auth
+    addChild(addChildInput: AddChildInput!): Auth
     addUser(userInput: UserInput!): User
     updateAdult(adultInput: AdultInput!): Adult
     updateChild(updateChildInput: UpdateChildInput!): Child
     updateUser(userInput: UserInput!): User
-    # login(email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     } 
 
 `;
