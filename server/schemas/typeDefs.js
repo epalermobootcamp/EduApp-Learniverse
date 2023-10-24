@@ -30,7 +30,8 @@ type User {
 
 type Auth {
     token: ID!
-    profile: Profile
+    adultProfile: Adult
+    childProfile: Child
   }
 
 type Language {
