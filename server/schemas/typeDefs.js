@@ -92,9 +92,9 @@ input UserInput {
     id: String!
 }
  type Query {
-    child(id: String!): Child
+    child(username: String!): Child
     words: [Language]
-    adult(id: String!): Adult
+    adult(username: String!): Adult
     animals: [Animal]
     score(id: Int!): Score
 }
