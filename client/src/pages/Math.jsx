@@ -51,3 +51,6 @@ const Math = () => {
 };
 
 export default Math;
+
+// Get token from local storage.
+// 
