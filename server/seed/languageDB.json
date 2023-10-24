@@ -1,0 +1,37 @@
+[
+  {
+    "word": "independent",
+    "phonetic": true,
+    "letterCount": "11",
+    "clue": "This word means free from outside control; not depending on another's authority",
+    "digraph": false
+  },
+  {
+    "word": "freedom",
+    "phonetic": true,
+    "letterCount": "7",
+    "clue": "A state of not being imprisoned or enslaved",
+    "diagraph": true
+  },
+  {
+    "word": "autonomous",
+    "phonetic": true,
+    "letterCount": "10",
+    "clue": "Having the freedom to govern itself or control its own affairs",
+    "diagraph": false
+  },
+  {
+    "word": "liberty",
+    "phonetic": true,
+    "letterCount": "7",
+    "clue": "The state of being free within society from oppressive restrictions",
+    "diagraph": false
+  },
+  {
+    "word": "sovereign",
+    "phonetic": true,
+    "letterCount": "7",
+    "clue": "Having supreme power or authority",
+    "diagraph": true
+  }
+]
