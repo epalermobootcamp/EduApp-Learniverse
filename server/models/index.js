@@ -1,15 +1,15 @@
-const adultModel = require("./Adult.js");
-const childModel = require("./Child.js");
-const languageModel = require("./Language.js");
-const scienceModel = require("./Animal.js");
-const scoreModel = require("./Score.js");
-const userModel = require("./User.js");
+const Adult = require("./Adult.js");
+const Child = require("./Child.js");
+const Language = require("./Language.js");
+const Animal = require("./Animal.js");
+const Score = require("./Score.js");
+const User = require("./User.js");
 
 module.exports = {
-  adultModel,
-  childModel,
-  languageModel,
-  scienceModel,
-  scoreModel,
-  userModel,
+  Adult,
+  Child,
+  Language,
+  Animal,
+  Score,
+  User
 };
