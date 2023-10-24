@@ -1,0 +1,34 @@
+[
+  {
+    "animal": "rabbit",
+    "trophicLvl": "herbivore",
+    "habitat": "warren",
+    "class": "mammal",
+    "locomotion": "hop",
+    "covering": "fur"
+  },
+  {
+    "animal": "red tailed hawk",
+    "trophicLvl": "carnivore",
+    "habitat": "nest",
+    "class": "bird",
+    "locomotion": "fly",
+    "covering": "feathers"
+  },
+  {
+    "animal": "trout",
+    "trophicLvl": "carnivore",
+    "habitat": "river",
+    "class": "fish",
+    "locomotion": "swim",
+    "covering": "scales"
+  },
+  {
+    "animal": "salamander",
+    "trophicLvl": "insectivore",
+    "habitat": "riverbank",
+    "class": "amphibian",
+    "locomotion": "walk",
+    "covering": "slimy skin"
+  }
+]

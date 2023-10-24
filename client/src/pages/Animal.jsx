@@ -18,7 +18,9 @@ export default function Concentration() {
         </p>
         
         <div>
-<DropdownMenu></DropdownMenu>
+<DropdownMenu>
+    
+</DropdownMenu>
         </div>
      </div>
   
