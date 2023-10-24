@@ -6,7 +6,7 @@ import App from "./App.jsx";
 import Home from "./pages/Home";
 // import Profile from "./pages/Profile";
 // import Login from './pages/Login';
-import Language from './pages/Language';
+// import Language from './pages/Language';
 import Math from "./pages/Math";
 import Animal from "./pages/Animal";
 
@@ -14,7 +14,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -28,10 +27,10 @@ const router = createBrowserRouter([
       //   path: "/Profile",
       //   element: <Profile />,
       // },
-      {
-        path: '/spellGame',
-        element: <Language />
-      },
+      // {
+      //   path: '/spellGame',
+      //   element: <Language />
+      // },
       {
         path: "/diceGame",
         element: <Math />,
