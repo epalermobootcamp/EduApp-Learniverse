@@ -52,5 +52,8 @@ const Math = () => {
 
 export default Math;
 
-// Get token from local storage.
-// 
+// Get profile token from local storage.
+// In the token will be a profile w/ username or email etc...
+// Use a mutation with username and new score, new resolver, find the DB document with username, and update the child.score.math array.
+// One function can do everything 
+// Use template literal OR if-else statement.
