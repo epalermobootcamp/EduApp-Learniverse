@@ -23,7 +23,11 @@ const resolvers = {
       return Language.find(params).sort({ letterCount: 1, word: 1 });
     },
     animals: async (parent, args) => {
-      return Science.find(params).sort({ animal });
+      return Animal.find();
+    },
+    findAnimal: async (parent, args) => {
+      console.log (args._id)
+      return Animal.findById(args._id);
     },
   },
   Mutation: {
