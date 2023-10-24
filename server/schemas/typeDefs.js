@@ -71,6 +71,15 @@ input AdultInput {
     subscribed: Boolean!
 }
 
+input UpdateAdultInput {
+    username: String
+    adultFirstName: String
+    adultLastName: String
+    email: String
+    password: String
+    subscribed: Boolean
+}
+
 input AddChildInput {
     username: String!
     password: String!
@@ -103,7 +112,7 @@ input UserInput {
     addAdult(adultInput: AdultInput!): Auth
     addChild(addChildInput: AddChildInput!): Auth
     addUser(userInput: UserInput!): User
-    updateAdult(adultInput: AdultInput!): Adult
+    updateAdult(adultInput: UpdateAdultInput!): Adult
     updateChild(updateChildInput: UpdateChildInput!): Child
     updateUser(userInput: UserInput!): User
     login(email: String!, password: String!): Auth

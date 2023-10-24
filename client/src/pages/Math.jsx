@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { rollDice, getRandomOperator, calculateAnswer } from "../utils/math";
 import AuthService from "../utils/auth";
+import { UPDATE_MATH_SCORE } from '../utils/mutations';
 
-const [updateMathScore] = useMutation(UPDATE_MATH_SCORE);
 
 const Math = () => {
   const [diceRollOne, setDiceRollOne] = useState(1);
@@ -12,7 +12,8 @@ const Math = () => {
   const [randomOperator, setRandomOperator] = useState("+");
   const [userAnswer, setUserAnswer] = useState("");
   const [correctAnswer, setCorrectAnswer] = useState(null);
-
+  const [updateMathScore] = useMutation(UPDATE_MATH_SCORE);
+  
   const handleRollDice = () => {
     const newDiceRollOne = rollDice();
     const newDiceRollTwo = rollDice();

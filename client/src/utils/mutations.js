@@ -38,11 +38,12 @@ export const UPDATE_CHILD = gql`
 
 // Mutation to update an adult
 export const UPDATE_ADULT = gql`
-  mutation updateAdult($username: String!, $adultFirstName: String!, $adultLastName: String!, $email: String!, $password: String!, $subscribed: Boolean!) {
+  mutation updateAdult($username: String, $adultFirstName: String, $adultLastName: String, $email: String, $password: String, $subscribed: Boolean) {
     updateAdult(username: $username, adultFirstName: $adultFirstName, adultLastName: $adultLastName, email: $email, password: $password, subscribed: $subscribed) {
       _id
       username
   }
+}
 `;
 
 // Mutation to update math score
