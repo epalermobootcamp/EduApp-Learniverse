@@ -96,7 +96,7 @@ input UserInput {
     words: [Language]
     adult(username: String!): Adult
     animals: [Animal]
-    score(id: Int!): Score
+    score(username: String!): Score
 }
 
  type Mutation {
