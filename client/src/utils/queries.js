@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-const QUERY_ADULT = gql`
+export const QUERY_ADULT = gql`
   query singleAdult($username: String!) {
     adult(username: $username) {
       _id
@@ -31,7 +31,7 @@ const QUERY_ADULT = gql`
   }
 `;
 
-const QUERY_CHILD = gql`
+export const QUERY_CHILD = gql`
   query singleChild($username: String!) {
     child(username: $username) {
       _id
@@ -54,7 +54,7 @@ const QUERY_CHILD = gql`
   }
 `;
 
-const QUERY_SCORE = gql`
+export const QUERY_SCORE = gql`
   query singleScore($username: String!) {
     score(username: $username) {
       _id
@@ -68,7 +68,7 @@ const QUERY_SCORE = gql`
   }
 `;
 
-const QUERY_WORDS = gql`
+export const QUERY_WORDS = gql`
   query words {
     words {
       _id
@@ -81,7 +81,7 @@ const QUERY_WORDS = gql`
   }
 `;
 
-const QUERY_ANIMALS = gql`
+export  QUERY_ANIMALS = gql`
   query animals {
     animals {
       _id
