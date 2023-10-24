@@ -3,7 +3,7 @@ const childModel = require("./Child.js");
 const languageModel = require("./Language.js");
 const scienceModel = require("./Animal.js");
 const scoreModel = require("./Score.js");
-const usersModel = require("./Users.js");
+const userModel = require("./User.js");
 
 module.exports = {
   adultModel,
@@ -11,5 +11,5 @@ module.exports = {
   languageModel,
   scienceModel,
   scoreModel,
-  usersModel,
+  userModel,
 };

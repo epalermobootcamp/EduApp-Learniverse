@@ -1,4 +1,5 @@
-const { Adult, Child, Users, Language, Animal, Score } = require("../models");
+const { Adult, Child, User, Language, Animal, Score } = require("../models");
+const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
@@ -15,7 +16,7 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    /* score: async (parent, args) => {
+    score: async (parent, args) => {
       return Child.findOne({ username }).populate("score");
     },
     words: async (parent, { letterCount }) => {
@@ -23,39 +24,23 @@ const resolvers = {
     },
     animals: async (parent, args) => {
       return Science.find(params).sort({ animal });
-    }, */
+    },
   },
   Mutation: {
+    // addAdult: async (parent, { username, email, password }) => {
+    //   const adult = await Adult.create({ username, email, password });
+    //   const token = signToken(adult);
+    //   return { token, adult };
+    // },
+    // addChild: async (parent, { username, password }) => {
+    //   const child = await Child.create({ username, password });
+    //   const token = signToken(user);
+    //   return { token, user };
+    // },
     addUser: async (parent, { username, email, password }) => {
-      const user = await Users.create({ username, email, password });
+      const user = await User.create({ username, email, password });
       const token = signToken(user);
       return { token, user };
-    },
-    /*  addAdult: async (parent, { username, email, password }) => {
-      const adult = await Adult.create({ username, email, password });
-      const token = signToken(adult);
-      return { token, adult };
-    },
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
-      if (!user) {
-        throw AuthenticationError;
-      }
-      const correctPw = await user.isCorrectPassword(password);
-      if (!correctPw) {
-        throw AuthenticationError;
-      }
-      const token = signToken(user);
-      return { token, user };
-    },
-    addChild: async (parent, { username, password }) => {
-      const child = await Child.create({ username, password });
-      const token = signToken(user);
-      return { token, user };
-    },
-    createCardMatch: async (parent, args) => {
-      const cardMatch = await cardMatch.create(args);
-      return cardMatch;
     },
     updateChild: async (parent, args, context) => {
       if (context.user) {
@@ -76,9 +61,18 @@ const resolvers = {
         return User.findByIdAndUpdate(context.user.id, args, { new: true });
       }
     },
-    animals: async (parent, args) => {
-      return Animal.find();
-    }, */
+    // login: async (parent, { email, password }) => {
+    //   const user = await User.findOne({ email });
+    //   if (!user) {
+    //     throw AuthenticationError;
+    //   }
+    //   const correctPw = await user.isCorrectPassword(password);
+    //   if (!correctPw) {
+    //     throw AuthenticationError;
+    //   }
+    //   const token = signToken(user);
+    //   return { token, user };
+    // },
   },
 };
 
