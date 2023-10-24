@@ -12,7 +12,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Navigation />
-      <main className="mx-3">
+      <main>
         <Outlet />
       </main>
     </ApolloProvider>
