@@ -31,8 +31,8 @@ function calculateLast10Average(subject) {
 }
 
 scoreSchema
-  .virtual("last10ScienceScores")
-  .get(calculateLast10Average("science"));
+  .virtual("last10AnimalScores")
+  .get(calculateLast10Average("animal"));
 scoreSchema.virtual("last10MathScores").get(calculateLast10Average("math"));
 scoreSchema.virtual("last10LangScores").get(calculateLast10Average("language"));
 

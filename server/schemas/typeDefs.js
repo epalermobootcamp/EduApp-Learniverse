@@ -57,7 +57,7 @@ type Score {
     animal: [Int]
     language: [Int]
     math: [Int]
-    last10ScienceScores: Int
+    last10AnimalScores: Int
     last10MathScores: Int
     last10LangScores: Int
 }
@@ -96,6 +96,7 @@ input UserInput {
     words: [Language]
     adult(id: String!): Adult
     animals: [Animal]
+    findAnimal(_id: ID!): Animal
     score(id: Int!): Score
  }
 
@@ -118,7 +119,7 @@ module.exports = typeDefs;
 //Query.child = for a child to query their own score data
 //Query.words = for word game to query array of words to spell (filtered based on game settings)
 //Query.parent = for parent to query their children and their scores
-//Query.animals = for science game to query array of animals to render cards (filtered based on game settings)
+//Query.animals = for animal game to query array of animals to render cards (filtered based on game settings)
 //!Query.score = I can't think of a reason for this one.
 
 //Mutation.addUser = to create user document when either type of account signs up to ensure ID uniqueness is inter-model.
