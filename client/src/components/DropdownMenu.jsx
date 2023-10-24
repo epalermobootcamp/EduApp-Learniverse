@@ -1,7 +1,7 @@
 import ('../style/general.css');
 import ('../style/card.css');
 import {useState} from 'react';
-import {QUERY_?} from ('../utils/queries.js');
+import {QUERY_ANIMALS} from '../utils/queries.js';
 
 export function DropdownMenu() {
     const [selectedValue, setSelectedValue] = useState(null);
@@ -15,7 +15,7 @@ export function DropdownMenu() {
       //if pick 4 pairs need to render 8 cards - 4 with animals and 4 with characteristics
 
       console.log(`Selected ${value} pairs`);
-    };
+    
   
     return (
       <div className="dropdown">
@@ -71,5 +71,5 @@ export function DropdownMenu() {
         </div>
       </div>
     );
-  }
+  };
   
