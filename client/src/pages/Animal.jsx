@@ -1,4 +1,4 @@
-import Card from ('../components/Card.jsx');
+import Card from '../components/Card.jsx';
 import  DropdownMenu from '../components/DropdownMenu';
 
 import ('../style/general.css');
