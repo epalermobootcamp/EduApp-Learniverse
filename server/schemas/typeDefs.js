@@ -71,6 +71,15 @@ input AdultInput {
     subscribed: Boolean!
 }
 
+input UpdateAdultInput {
+    username: String
+    adultFirstName: String
+    adultLastName: String
+    email: String
+    password: String
+    subscribed: Boolean
+}
+
 input AddChildInput {
     username: String!
     password: String!
@@ -92,9 +101,9 @@ input UserInput {
     id: String!
 }
  type Query {
-    child(id: String!): Child
+    child(username: String!): Child
     words: [Language]
-    adult(id: String!): Adult
+    adult(username: String!): Adult
     animals: [Animal]
     findAnimal(_id: ID!): Animal
     score(id: Int!): Score
@@ -104,17 +113,17 @@ input UserInput {
     addAdult(adultInput: AdultInput!): Auth
     addChild(addChildInput: AddChildInput!): Auth
     addUser(userInput: UserInput!): User
-    updateAdult(adultInput: AdultInput!): Adult
+    updateAdult(adultInput: UpdateAdultInput!): Adult
     updateChild(updateChildInput: UpdateChildInput!): Child
     updateUser(userInput: UserInput!): User
     login(email: String!, password: String!): Auth
-    } 
+    updateMathScore(username: String!, newMathScore: Int!): Child
+} 
 
 `;
 
 module.exports = typeDefs;
 //sign-up returns account document and token
-//! Line 66 Auth = document + token
 
 //Query.child = for a child to query their own score data
 //Query.words = for word game to query array of words to spell (filtered based on game settings)

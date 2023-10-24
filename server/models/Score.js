@@ -39,3 +39,5 @@ scoreSchema.virtual("last10LangScores").get(calculateLast10Average("language"));
 const Score = model("Score", scoreSchema);
 
 module.exports = Score;
+
+//Embedded subdocument doesn't get ID.

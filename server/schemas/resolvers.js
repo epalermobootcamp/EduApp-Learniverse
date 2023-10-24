@@ -1,5 +1,5 @@
 const { Adult, Child, User, Language, Animal, Score } = require("../models");
-const { signToken, AuthenticationError } = require('../utils/auth');
+const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -12,12 +12,12 @@ const resolvers = {
 
     child: async (parent, args, context) => {
       if (context.args.username) {
-        return Child.findOne({ _id: context.user._id }).populate("score");
+        return Child.findOne({ _id: context.user._id })
       }
       throw AuthenticationError;
     },
     score: async (parent, args) => {
-      return Child.findOne({ username }).populate("score");
+      return Child.findOne({ username })
     },
     words: async (parent, { letterCount }) => {
       return Language.find(params).sort({ letterCount: 1, word: 1 });
@@ -41,7 +41,7 @@ const resolvers = {
     },
     addChild: async (parent, { username, password }) => {
       const child = await Child.create({ username, password });
-      const token = signToken(user);
+      const token = signToken(child);
       return { token, user };
     },
     addUser: async (parent, { username, email, password }) => {
@@ -66,6 +66,32 @@ const resolvers = {
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return User.findByIdAndUpdate(context.user.id, args, { new: true });
+      }
+    },
+    updateMathScore: async (parent, { newMathScore }, context) => {
+      try {
+        if (!context.user) {
+          throw new Error("User not authenticated");
+        }
+
+        const { username } = context.user; 
+
+        // Find the child by username
+        const child = await Child.findOne({ username });
+
+        if (!child) {
+          throw new Error("Child not found");
+        }
+
+        // Update the math score
+        child.score.math.unshift(newMathScore);
+
+        // Save the updated child document
+        const updatedChild = await child.save();
+
+        return updatedChild;
+      } catch (error) {
+        throw new Error(`Failed to update math score: ${error.message}`);
       }
     },
     login: async (parent, { email, password }) => {

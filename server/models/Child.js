@@ -32,7 +32,7 @@ const childSchema = new Schema({
   age: {
     type: Number,
   },
-  score: [Score.schema],
+  score: Score.schema,
 });
 
 // set up pre-save middleware to create password
