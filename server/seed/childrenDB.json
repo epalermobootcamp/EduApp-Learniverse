@@ -1,22 +1,30 @@
 [
-    {
-        "username":"fred",
-        "firstName":"Fred",
-        "lastName":"Jones",
-        "email":"fj@test.com",
-        "password":"1234",
-        "grade":"2",
-        "age":"7",
-        "score": []
-    },
-    {
-        "username":"jane",
-        "firstName":"Jane",
-        "lastName":"Doe",
-        "email":"jdoe@test.com",
-        "password":"1234",
-        "grade":"1",
-        "age":"6",
-        "score": []
+  {
+    "username": "fred",
+    "firstName": "Fred",
+    "lastName": "Jones",
+    "email": "fj@test.com",
+    "password": "1234",
+    "grade": "2",
+    "age": "7",
+    "score": {
+      "animal": [82, 79, 85, 88, 91, 83, 87, 90, 84, 86],
+      "language": [78, 80, 85, 82, 88, 86, 91, 89, 92, 87],
+      "math": [90, 88, 86, 91, 84, 95, 89, 92, 93, 87]
     }
+  },
+  {
+    "username": "jane",
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "email": "jdoe@test.com",
+    "password": "1234",
+    "grade": "1",
+    "age": "6",
+    "score": {
+      "animal": [95, 87, 92, 88, 91, 94, 89, 90, 93, 86],
+      "language": [78, 85, 79, 80, 88, 86, 90, 91, 82, 84],
+      "math": [92, 93, 95, 90, 87, 88, 96, 94, 91, 89]
+    }
+  }
 ]
