@@ -11,22 +11,6 @@ type Child {
     score: [Score]
 }
 
-type User {
-    _id: ID!
-    username: String!
-    isParent: Boolean!
-
-}
-
-type Language {
-    _id: ID!
-    word: String!
-    phonetic: Boolean!
-    letterCount: Int!
-    clue: String!
-    digraph: Boolean!
-}
-
 type Adult {
     _id: ID!
     username: String!
@@ -36,6 +20,27 @@ type Adult {
     password: String!
     subscribed: Boolean!
     children: [Child]
+}
+
+type User {
+    _id: ID!
+    username: String!
+    isParent: Boolean!
+}
+
+type Auth {
+    token: ID!
+    adultProfile: Adult
+    childProfile: Child
+  }
+
+type Language {
+    _id: ID!
+    word: String!
+    phonetic: Boolean!
+    letterCount: Int!
+    clue: String!
+    digraph: Boolean!
 }
 
 type Animal {
@@ -95,13 +100,13 @@ input UserInput {
  }
 
  type Mutation {
-    # \\addAdult(adultInput: AdultInput!): Auth
-    # addChild(addChildInput: AddChildInput!): Auth
+    addAdult(adultInput: AdultInput!): Auth
+    addChild(addChildInput: AddChildInput!): Auth
     addUser(userInput: UserInput!): User
     updateAdult(adultInput: AdultInput!): Adult
     updateChild(updateChildInput: UpdateChildInput!): Child
     updateUser(userInput: UserInput!): User
-    # login(email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     } 
 
 `;

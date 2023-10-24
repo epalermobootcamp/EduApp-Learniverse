@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const Child = require("./Child.js");
+const bcrypt = require('bcrypt');
 
 const adultSchema = new Schema({
   username: {
@@ -37,6 +38,22 @@ const adultSchema = new Schema({
     },
   ],
 });
+
+// set up pre-save middleware to create password
+adultSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+// compare the incoming password with the hashed password
+adultSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
+
 
 const Adult = model("Adult", adultSchema);
 
