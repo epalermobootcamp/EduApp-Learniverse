@@ -114,7 +114,6 @@ input UserInput {
 
 module.exports = typeDefs;
 //sign-up returns account document and token
-//! Line 66 Auth = document + token
 
 //Query.child = for a child to query their own score data
 //Query.words = for word game to query array of words to spell (filtered based on game settings)

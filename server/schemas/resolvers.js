@@ -37,7 +37,7 @@ const resolvers = {
     },
     addChild: async (parent, { username, password }) => {
       const child = await Child.create({ username, password });
-      const token = signToken(user);
+      const token = signToken(child);
       return { token, user };
     },
     addUser: async (parent, { username, email, password }) => {
@@ -70,7 +70,7 @@ const resolvers = {
           throw new Error("User not authenticated");
         }
 
-        const { username } = context.user; // Assuming the username is available in the user object
+        const { username } = context.user; 
 
         // Find the child by username
         const child = await Child.findOne({ username });
