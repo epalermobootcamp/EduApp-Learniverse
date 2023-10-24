@@ -10,7 +10,7 @@ function Navigation() {
             <li className="nav-item">
                 <Link
                     to="/"
-                    className={currentPage === '/' ? 'nav-link active' : 'nav-link'}
+                    className={currentPage === '/Home' ? 'nav-link active' : 'nav-link'}
                 >
                     Home
                 </Link>
@@ -18,7 +18,7 @@ function Navigation() {
             <li className="nav-item">
                 <Link
                     to="/diceGame"
-                    className={currentPage === '/AboutMe' ? 'nav-link active' : 'nav-link'}
+                    className={currentPage === '/dicGame' ? 'nav-link active' : 'nav-link'}
                 >
                     Dice Game
                 </Link>
@@ -26,7 +26,7 @@ function Navigation() {
             <li className="nav-item">
                 <Link
                     to="/concentrationGame"
-                    className={currentPage === '/Portfolio' ? 'nav-link active' : 'nav-link'}
+                    className={currentPage === '/concentrationGame' ? 'nav-link active' : 'nav-link'}
                 >
                     Concentration Game
                 </Link>
@@ -34,7 +34,7 @@ function Navigation() {
             <li className="nav-item">
                 <Link
                     to="/spellGame"
-                    className={currentPage === '/Resume' ? 'nav-link active' : 'nav-link'}
+                    className={currentPage === '/spellGame' ? 'nav-link active' : 'nav-link'}
                 >
                     Guess the word
                 </Link>
@@ -42,7 +42,7 @@ function Navigation() {
             <li className="nav-item">
                 <Link
                     to="/scores"
-                    className={currentPage === '/Contact' ? 'nav-link active' : 'nav-link'}
+                    className={currentPage === '/scores' ? 'nav-link active' : 'nav-link'}
                 >
                     Scores
                 </Link>

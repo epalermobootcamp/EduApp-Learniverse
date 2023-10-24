@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { QUERY_ANIMAL, QUERY_CHARC } from "../utils/queries";
-import AnimalCard from "./AnimalCard";
-import CharacteristicsCard from "./CharacteristicsCard";
-import { DropdownMenu } from "./DropdownMenu";
+import AnimalCard from "../components/AnimalCard";
+import CharacteristicCard from "../components/CharacteristicCard";
+import { DropdownMenu } from "../components/DropdownMenu";
 import "../style/general.css";
 import "../style/card.css";
 
