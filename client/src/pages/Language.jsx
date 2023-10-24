@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import "./language.css";
+import "../style/language.css";
 
 function getWord() {
   return "independent";
