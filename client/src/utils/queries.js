@@ -81,15 +81,22 @@ export const QUERY_WORDS = gql`
   }
 `;
 
-export const QUERY_ANIMALS = gql`
-  query animals {
+export const QUERY_ANIMAL = gql`
+query Animal {
     animals {
       _id
-      trophicLvl
-      habitat
-      class
-      locomotion
-      covering
     }
   }
 `;
+
+export const QUERY_CHARC = gql`
+query AnimalsChar($id: ID!) {
+    findAnimal(_id: $id) {
+      class
+      covering
+      habitat
+      locomotion
+      trophicLvl
+    }
+  }
+`

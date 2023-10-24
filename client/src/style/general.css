@@ -1,0 +1,29 @@
+ * {
+        --lightBlue: #0094c6;
+        --medBlue: #005e7c;
+        --darkBlue: #112fb1;
+        --ws: whitesmoke;
+   
+        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        line-height: 2;
+        font-weight: 400;
+        display: flex;
+        flex-direction: column;
+        
+   
+        --bs-nav-tabs-border-color: var(--medBlue);
+        --bs-nav-tabs-link-hover-border-color: var(--lightBlue);
+        --bs-nav-tabs-link-hover-color: var(--lightBlue);
+        --bs-nav-tabs-link-active-color: var(--ws);
+        --bs-nav-tabs-link-active-border-color: var(--medBlue);
+        --bs-nav-tabs-link-active-bg: var(--medBlue);
+        color: var(--lightBlue);
+        background-color: var(--darkBlue);
+        min-height: 100vh;
+    }
+
+
+
+
+
+
