@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../components/Card";
 
-export default function CharacteristicsCard(props) {
+export default function CharacteristicCard(props) {
   const { animalChar, flipped, onClick } = props;
 
   return (

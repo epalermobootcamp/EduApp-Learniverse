@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Navigation from "./components/NavBar.jsx";
+import Navigation from "./components/NavBar";
 import "./style/general.css";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
@@ -8,7 +8,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-function App() {
+export default function App() {
   return (
     <ApolloProvider client={client}>
       <Navigation />
@@ -19,4 +19,4 @@ function App() {
   );
 }
 
-export default App;
+
