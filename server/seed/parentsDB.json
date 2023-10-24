@@ -1,18 +1,18 @@
 [
-    {
-     "username":"HJones",
-     "adultFirstName": "Henry",
-     "adultLastName":"Jones",
-     "email":"hjones@test.com",
-     "password":"12345",
-     "subscribed":"true"
-    },
-    {
-        "username":"MDoe",
-        "adultFirstName": "Mary",
-        "adultLastName":"Doe",
-        "email":"mdoe@test.com",
-        "password":"12345",
-        "subscribed":"false"
-       }
+  {
+    "username": "HJones",
+    "adultFirstName": "Henry",
+    "adultLastName": "Jones",
+    "email": "hjones@test.com",
+    "password": "12345",
+    "subscribed": "true"
+  },
+  {
+    "username": "MDoe",
+    "adultFirstName": "Mary",
+    "adultLastName": "Doe",
+    "email": "mdoe@test.com",
+    "password": "12345",
+    "subscribed": "false"
+  }
 ]
