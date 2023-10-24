@@ -34,7 +34,7 @@ const Home = () => {
         </ul>
       </nav>
       <div>
-        {/* Content of your Home page goes here */}
+        {/* Content goes here */}
       </div>
     </div>
   );
