@@ -3,7 +3,7 @@ import ('../style/card.css');
 import {useState} from 'react';
 import {QUERY_ANIMALS} from '../utils/queries.js';
 
-export function DropdownMenu() {
+export default function DropdownMenu() {
     const [selectedValue, setSelectedValue] = useState(null);
   
     const handleSelect = (value) => {

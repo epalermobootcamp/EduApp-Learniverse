@@ -81,7 +81,7 @@ export const QUERY_WORDS = gql`
   }
 `;
 
-export  QUERY_ANIMALS = gql`
+export const QUERY_ANIMALS = gql`
   query animals {
     animals {
       _id
