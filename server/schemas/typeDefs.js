@@ -109,17 +109,5 @@ type Query {
 `;
 
 module.exports = typeDefs;
-//sign-up returns account document and token
 
-//Query.child = for a child to query their own score data
-//Query.words = for word game to query array of words to spell (filtered based on game settings)
-//Query.parent = for parent to query their children and their scores
-//Query.animals = for animal game to query array of animals to render cards (filtered based on game settings)
-//!Query.score = I can't think of a reason for this one.
-
-//Mutation.addParent = for parent account sign up
-//Mutation.addChild = for child account sign up
-//Mutation.updateParent = for parents to update their info
-//Mutation.updateChild = for parents to update children's info
-//Mutation.login = for any account to log in
-//! mutation.createCardMatch = Not sure. No args implemented here.
+//! type Input means args will be object within object

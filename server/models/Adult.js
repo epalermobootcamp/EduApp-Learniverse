@@ -11,12 +11,12 @@ const adultSchema = new Schema({
   },
   adultFirstName: {
     type: String,
-    required: true,
+    // required: true,
     trim: true,
   },
   adultLastName: {
     type: String,
-    required: true,
+    // required: true,
     trim: true,
   },
   email: {
@@ -32,7 +32,7 @@ const adultSchema = new Schema({
   },
   subscribed: {
     type: Boolean,
-    required: true,
+    // required: true,
   },
   children: [
     {

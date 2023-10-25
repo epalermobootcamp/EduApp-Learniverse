@@ -36,29 +36,39 @@ const resolvers = {
   Mutation: {
     addAdult: async (
       parent,
-      { username, email, password }
+      { addAdultInput } //! args.addAdultInput
     ) => {
+      let { username, password, email } = addAdultInput;
+      // console.log("Add adult 1.", )
       const isUnique = await isUsernameUnique(username);
+      // console.log("Add adult 2.")
       if (!isUnique) {
         throw new Error('Username is not unique.');
       }
+      // console.log("Add adult 3.", username, email, password)
       const adult = await Adult.create({
         username,
         email,
         password,
       });
+ 
+      // console.log("Add adult 4.", adult)
       const token = signToken(adult);
-      return { token, adult };
+      return { token, adultProfile: adult }; //!adultPrfile: adult
     },
-    addChild: async (parent, { username, password }) => {
-      // Check if the username is unique using the imported function
+    addChild: async (parent, { addChildInput }) => {
+      let { username, password} = addChildInput;
+      console.log("Add child 1.", )
       const isUnique = await isUsernameUnique(username);
+      console.log("Add child 2.")
       if (!isUnique) {
         throw new Error('Username is not unique.');
       }
+      console.log("Add child 3.", username, password)
       const child = await Child.create({ username, password });
+      console.log("Add child 4.", child)
       const token = signToken(child);
-      return { token, child };
+      return { token, childProfile: child };
     },
     updateChild: async (parent, args, context) => {
       if (context.user) {

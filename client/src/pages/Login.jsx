@@ -62,12 +62,14 @@ const Login = () => {
 
   const handleChildSignup = async (event) => {
     event.preventDefault();
-    console.log(childFormState)
+    console.log("Inside handleChildSignup"); 
+    console.log("childFormState: ", childFormState)
     try {
-      const { data } = await addChild({
-        variables: { ...childFormState },
+      console.log("Before addChild mutation");
+      const { data, error } = await addChild({
+        variables: { addChildInput: childFormState },
       });
-
+      console.log(error)
       AuthService.login(data.addChild.token);
 
       // Redirect to the homepage after successful signup
@@ -87,10 +89,10 @@ const Login = () => {
 
     try {
       console.log("Before addAdult mutation");
-      const { data } = await addAdult({
-        variables: { ...adultFormState },
+      const { data, error } = await addAdult({
+        variables: { addAdultInput: adultFormState }, //!
       });
-
+      console.log(error)
       AuthService.login(data.addAdult.token);
 
       // // Redirect to the homepage after successful signup

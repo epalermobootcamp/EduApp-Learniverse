@@ -2,28 +2,29 @@ import { gql } from '@apollo/client';
 
 // Mutation to add an adult
 export const ADD_ADULT = gql`
-  mutation addAdult($username: String!, $email: String!, $password: String!) {
-    addAdult(username: $username, email: $email, password: $password) {
-      token
-      adult {
-        _id
-        username
-      }
+mutation AddAdult($addAdultInput: AddAdultInput!) {
+  addAdult(addAdultInput: $addAdultInput) {
+    adultProfile {
+      username
+      email
+      password
     }
+    token
   }
+}
 `;
 
 // Mutation to add a child
 export const ADD_CHILD = gql`
-  mutation addChild($username: String!, $password: String!) {
-    addChild(username: $username, password: $password) {
-      token
-      child {
-        _id
-        username
-      }
+mutation AddChild($addChildInput: AddChildInput!) {
+  addChild(addChildInput: $addChildInput) {
+    childProfile {
+      username
+      password
     }
+    token
   }
+}
 `;
 
 // Mutation to update a child
