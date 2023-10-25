@@ -7,7 +7,7 @@ import './style/general.css';
 
 import App from './App.jsx';
 import Home from './pages/Home';
-// import Profile from './pages/Profile';
+import Profile from './pages/Profile';
 // import Login from './pages/Login';
 // import Language from './pages/Language';
 import Math from './pages/Math';
@@ -26,10 +26,10 @@ const router = createBrowserRouter([
       //   path: "/Login",
       //   element: <Login />,
       // },
-      // {
-      //   path: "/Profile",
-      //   element: <Profile />,
-      // },
+      {
+        path: "/Profile",
+        element: <Profile />,
+      },
       // {
       //   path: '/spellGame',
       //   element: <Language />

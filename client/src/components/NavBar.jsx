@@ -1,9 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import ('../style/general.css');
+import AuthService from '../utils/auth';
 
 
 function Navigation() {
     const currentPage = useLocation().pathname;
+      // Check if the user is logged in
+  const loggedIn = AuthService.loggedIn();
 
     return (
         <ul className="nav nav-tabs">
@@ -15,6 +18,25 @@ function Navigation() {
                     Home
                 </Link>
             </li>
+            {loggedIn ? (
+            <li className="nav-item">
+                <Link
+                    to="/Profile"
+                    className={currentPage === '/Profile' ? 'nav-link active' : 'nav-link'}
+                >
+                    My Account
+                </Link>
+            </li>
+            ) : (
+                <li className="nav-item">
+                <Link
+                    to="/Login"
+                    className={currentPage === '/Login' ? 'nav-link active' : 'nav-link'}
+                >
+                    Login/Sign Up
+                </Link>
+            </li>
+            )}
             <li className="nav-item">
                 <Link
                     to="/diceGame"
