@@ -4,7 +4,7 @@
     "adultFirstName": "Henry",
     "adultLastName": "Jones",
     "email": "hjones@test.com",
-    "password": "12345",
+    "password": "password",
     "subscribed": "true"
   },
   {
@@ -12,7 +12,7 @@
     "adultFirstName": "Mary",
     "adultLastName": "Doe",
     "email": "mdoe@test.com",
-    "password": "12345",
+    "password": "password",
     "subscribed": "false"
   }
 ]

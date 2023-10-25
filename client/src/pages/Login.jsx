@@ -82,16 +82,19 @@ const Login = () => {
 
   const handleAdultSignup = async (event) => {
     event.preventDefault();
+    console.log("Inside handleAdultSignup"); 
+    console.log("adultFormState: ", adultFormState)
 
     try {
+      console.log("Before addAdult mutation");
       const { data } = await addAdult({
         variables: { ...adultFormState },
       });
 
       AuthService.login(data.addAdult.token);
 
-      // Redirect to the homepage after successful signup
-      window.location.assign('/');
+      // // Redirect to the homepage after successful signup
+      // window.location.assign('/');
     } catch (error) {
       console.error(error);
     }
