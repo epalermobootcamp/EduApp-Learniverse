@@ -1,31 +1,31 @@
 const typeDefs = `
 type Child {
-    _id: ID!
-    username: String!
+    _id: ID
+    username: String
     firstName: String
     lastName: String
     email: String
-    password: String!
+    password: String
     grade: Int
     age: Int
     score: [Score]
 }
 
 type Adult {
-    _id: ID!
-    username: String!
-    adultFirstName: String!
-    adultLastName: String!
-    email: String!
-    password: String!
-    subscribed: Boolean!
+    _id: ID
+    username: String
+    adultFirstName: String
+    adultLastName: String
+    email: String
+    password: String
+    subscribed: Boolean
     children: [Child]
 }
 
 type User {
-    _id: ID!
-    username: String!
-    isParent: Boolean!
+    _id: ID
+    username: String
+    isParent: Boolean
 }
 
 type Auth {
@@ -35,21 +35,21 @@ type Auth {
   }
 
 type Language {
-    _id: ID!
-    word: String!
-    phonetic: Boolean!
-    letterCount: Int!
-    clue: String!
-    digraph: Boolean!
+    _id: ID
+    word: String
+    phonetic: Boolean
+    letterCount: Int
+    clue: String
+    digraph: Boolean
 }
 
 type Animal {
-    _id: ID!
-    trophicLvl: String!
-    habitat: String!
-    class: String!
-    locomotion: String!
-    covering: String!
+    _id: ID
+    trophicLvl: String
+    habitat: String
+    class: String
+    locomotion: String
+    covering: String
 }
 
 type Score {
