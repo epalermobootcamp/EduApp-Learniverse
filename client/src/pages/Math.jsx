@@ -4,6 +4,8 @@ import { useMutation } from "@apollo/client";
 import { rollDice, getRandomOperator, calculateAnswer } from "../utils/math";
 import AuthService from "../utils/auth";
 import { UPDATE_MATH_SCORE } from '../utils/mutations';
+import ('../style/general.css');
+import ('../style/card.css');
 
 
 const Math = () => {
@@ -51,13 +53,14 @@ const Math = () => {
 
   return (
     <div className="mathGame">
-      <h1>Math Game</h1>
+      <h1 className="conc">Math Game</h1>
       <div>
         <button onClick={handleRollDice}>Roll Dice</button>
-        <p>
+        <h3>
           {diceRollOne} {randomOperator} {diceRollTwo} = ?
-        </p>
+        </h3>
         <input
+        className="math"
           type="number"
           value={userAnswer}
           onChange={(e) => setUserAnswer(e.target.value)}
