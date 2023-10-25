@@ -1,5 +1,8 @@
-const { Adult, Child, User, Language, Animal, Score } = require("../models");
+const { Adult, Child, Language, Animal, Score } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
+
+// Import the isUsernameUnique function from the utils folder
+const isUsernameUnique = require("../utils/uniqueUsername");
 
 const resolvers = {
   Query: {
@@ -12,12 +15,12 @@ const resolvers = {
 
     child: async (parent, args, context) => {
       if (context.args.username) {
-        return Child.findOne({ _id: context.user._id })
+        return Child.findOne({ _id: context.user._id });
       }
       throw AuthenticationError;
     },
     score: async (parent, args) => {
-      return Child.findOne({ username })
+      return Child.findOne({ username });
     },
     words: async (parent, { letterCount }) => {
       return Language.find(params).sort({ letterCount: 1, word: 1 });
@@ -26,28 +29,36 @@ const resolvers = {
       return Animal.find();
     },
     findAnimal: async (parent, args) => {
-      console.log (args._id)
+      console.log(args._id);
       return Animal.findById(args._id);
     },
   },
   Mutation: {
-    addAdult: async (parent, { username, email, password }) => {
-      // First we create the adult account
-      const adult = await Adult.create({ username, email, password });
-      // To reduce friction for the user, we immediately sign a JSON Web Token and log the user in after they are created
+    addAdult: async (
+      parent,
+      { username, email, password }
+    ) => {
+      const isUnique = await isUsernameUnique(username);
+      if (!isUnique) {
+        throw new Error('Username is not unique.');
+      }
+      const adult = await Adult.create({
+        username,
+        email,
+        password,
+      });
       const token = signToken(adult);
-      // Return an `Auth` object that consists of the signed token and user's information
       return { token, adult };
     },
     addChild: async (parent, { username, password }) => {
+      // Check if the username is unique using the imported function
+      const isUnique = await isUsernameUnique(username);
+      if (!isUnique) {
+        throw new Error('Username is not unique.');
+      }
       const child = await Child.create({ username, password });
       const token = signToken(child);
-      return { token, user };
-    },
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
-      const token = signToken(user);
-      return { token, user };
+      return { token, child };
     },
     updateChild: async (parent, args, context) => {
       if (context.user) {
@@ -63,18 +74,13 @@ const resolvers = {
         });
       }
     },
-    updateUser: async (parent, args, context) => {
-      if (context.user) {
-        return User.findByIdAndUpdate(context.user.id, args, { new: true });
-      }
-    },
     updateMathScore: async (parent, { newMathScore }, context) => {
       try {
         if (!context.user) {
           throw new Error("User not authenticated");
         }
 
-        const { username } = context.user; 
+        const { username } = context.user;
 
         // Find the child by username
         const child = await Child.findOne({ username });
@@ -94,14 +100,22 @@ const resolvers = {
         throw new Error(`Failed to update math score: ${error.message}`);
       }
     },
-    login: async (parent, { email, password }) => {
-      // Look up the user by the provided email address. Since the `email` field is unique, we know that only one person will exist with that email
-      const user = await User.findOne({ email });
-      // If there is no user with that email address, return an Authentication error stating so
-      if (!user) {
+    login: async (parent, { username, password }) => {
+      // Look up the user by the provided username.
+      const childUser = await Child.findOne({ username });
+      const adultUser = await Adult.findOne({ username });
+      // If there is no user with that username, return an Authentication error stating so
+      if (!childUser && !adultUser) {
         throw AuthenticationError;
       }
-      // If there is a user found, execute the `isCorrectPassword` instance method and check if the correct password was pro
+      // If there is a user found, execute the `isCorrectPassword` instance method and check if the correct password was provided
+      let user;
+      if (childUser) {
+        user = childUser;
+      } else {
+        user = adultUser;
+      }
+    
       const correctPw = await user.isCorrectPassword(password);
       // If the password is incorrect, return an Authentication error stating so
       if (!correctPw) {
