@@ -4,7 +4,7 @@
     "firstName": "Fred",
     "lastName": "Jones",
     "email": "fj@test.com",
-    "password": "1234",
+    "password": "password",
     "grade": "2",
     "age": "7",
     "score": {
@@ -18,7 +18,7 @@
     "firstName": "Jane",
     "lastName": "Doe",
     "email": "jdoe@test.com",
-    "password": "1234",
+    "password": "password",
     "grade": "1",
     "age": "6",
     "score": {
