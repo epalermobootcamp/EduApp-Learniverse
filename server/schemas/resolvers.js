@@ -43,7 +43,7 @@ const resolvers = {
       const isUnique = await isUsernameUnique(username);
       // console.log("Add adult 2.")
       if (!isUnique) {
-        throw new Error('Username is not unique.');
+        throw new Error("Username is not unique.");
       }
       // console.log("Add adult 3.", username, email, password)
       const adult = await Adult.create({
@@ -51,22 +51,22 @@ const resolvers = {
         email,
         password,
       });
- 
+
       // console.log("Add adult 4.", adult)
       const token = signToken(adult);
       return { token, adultProfile: adult }; //!adultPrfile: adult
     },
     addChild: async (parent, { addChildInput }) => {
-      let { username, password} = addChildInput;
-      console.log("Add child 1.", )
+      let { username, password } = addChildInput;
+      console.log("Add child 1.");
       const isUnique = await isUsernameUnique(username);
-      console.log("Add child 2.")
+      console.log("Add child 2.");
       if (!isUnique) {
-        throw new Error('Username is not unique.');
+        throw new Error("Username is not unique.");
       }
-      console.log("Add child 3.", username, password)
+      console.log("Add child 3.", username, password);
       const child = await Child.create({ username, password });
-      console.log("Add child 4.", child)
+      console.log("Add child 4.", child);
       const token = signToken(child);
       return { token, childProfile: child };
     },
@@ -125,7 +125,7 @@ const resolvers = {
       } else {
         user = adultUser;
       }
-    
+
       const correctPw = await user.isCorrectPassword(password);
       // If the password is incorrect, return an Authentication error stating so
       if (!correctPw) {
@@ -134,7 +134,11 @@ const resolvers = {
       // If email and password are correct, sign user into the application with a JWT
       const token = signToken(user);
       // Return an `Auth` object that consists of the signed token and user's information
-      return { token, user };
+      if (childUser) {
+        return { token, childProfile: user };
+      } else {
+        return { token, adultProfile: user };
+      }
     },
   },
 };

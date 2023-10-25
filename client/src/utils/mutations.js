@@ -27,6 +27,20 @@ mutation AddChild($addChildInput: AddChildInput!) {
 }
 `;
 
+// Mutation to login
+export const LOGIN_USER = gql`
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+
 // Mutation to update a child
 export const UPDATE_CHILD = gql`
   mutation updateChild($username: String!, $firstName: String, $lastName: String, $email: String, $password: String!, $grade: Int, $age: Int) {
@@ -54,19 +68,6 @@ export const UPDATE_MATH_SCORE = gql`
       _id
       username
       score
-    }
-  }
-`;
-
-// Mutation to login
-export const LOGIN_USER = gql`
-  mutation login($username: String!, $password: String!) {
-    login(username: $username, password: $password) {
-      token
-      user {
-        _id
-        username
-      }
     }
   }
 `;

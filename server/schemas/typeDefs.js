@@ -105,7 +105,6 @@ type Query {
     login(email: String!, password: String!): Auth
     updateMathScore(username: String!, newMathScore: Int!): Child
 } 
-
 `;
 
 module.exports = typeDefs;
