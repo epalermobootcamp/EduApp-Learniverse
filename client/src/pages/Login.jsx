@@ -112,7 +112,6 @@ const Login = () => {
           <h4 className="card-title text-light p-2 login">Login</h4>
           <div className="card-body">
             <form onSubmit={handleLogin}>
-              console.log(handleLogin)
               <h5>Login</h5>
               <input
                 className="form-input"
