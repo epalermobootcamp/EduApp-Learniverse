@@ -45,6 +45,7 @@ type Language {
 
 type Animal {
     _id: ID!
+    animal: String!
     trophicLvl: String!
     habitat: String!
     class: String!

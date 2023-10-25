@@ -85,6 +85,7 @@ export const QUERY_ANIMAL = gql`
 query Animal {
     animals {
       _id
+      animal
     }
   }
 `;

@@ -1,22 +1,40 @@
-import React, { useState, useEffect } from "react";
-import { useQuery, useLazyQuery } from "@apollo/client";
-import { QUERY_ANIMAL, QUERY_CHARC } from "../utils/queries";
+import React, { useState, useCallback, useEffect } from "react";
+
+import { useQuery } from "@apollo/client";
+import { QUERY_ANIMAL } from "../utils/queries";
 import AnimalCard from "../components/AnimalCard";
 import CharacteristicCard from "../components/CharacteristicCard";
-import { DropdownMenu } from "../components/DropdownMenu";
+import {DropdownMenu} from "../components/DropdownMenu";
+
+import "bootstrap/dist/css/bootstrap.min.css"
 import "../style/general.css";
 import "../style/card.css";
 
+
+const createShuffleOrder = (numberOfItems) => {
+  const shuffleMap = []
+  for (let i=0; i<numberOfItems; i++){
+    const newPosition = Math.floor(Math.random()*shuffleMap.length);
+    shuffleMap.splice(newPosition, 0, i);
+  }
+  return shuffleMap; // every index is represented once but in a random position
+}
+
 export default function Concentration() {
-  const [selectedValue, setSelectedValue] = useState(null);
-  const [randomAnimal, setRandomAnimal] = useState(null);
-  const [randomCharacteristic, setRandomCharacteristic] = useState(null);
+  //const [selectedValue, setSelectedValue] = useState(null);
+  const selectedValue = 4;
+  const [randomAnimals, setRandomAnimals] = useState(null);
+
+  //const [flippedAnimalId, setFlippedAnimalId] = useState(null);
+  //const [flippedCharacteristicAnimalId, setFlippedCharacteristicAnimalId] = useState
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
 
-  const handleSelect = (value) => {
-    setSelectedValue(value);
-  };
+  const [shuffleOrder] = useState(createShuffleOrder(8));
+
+  // const handleSelect = (value) => {
+  //   setSelectedValue(value);
+  // };
 
   const {
     loading: animalLoading,
@@ -24,68 +42,108 @@ export default function Concentration() {
     data: animalData,
   } = useQuery(QUERY_ANIMAL);
 
-  useEffect(() => {
-    if (selectedValue && !animalLoading && !animalError) {
-      const animals = animalData.animals;
-      const randomAnimal = animals[Math.floor(Math.random() * animals.length)];
-      setRandomAnimal(randomAnimal);
+  const isAlreadyMatched = useCallback((id) => {
+    return matchedCards.some((matchedCardId)=>{
+      return (matchedCardId === id);      
+    })
+   
+  }, [matchedCards]);
+  const flipCard = useCallback(({type, id}) => {
+    const countBeforeFlip = flippedCards.length;
+    console.log(`Flipped count is ${countBeforeFlip}`);
+    //TODO: clickig the same card twice is not handled
+    if ((countBeforeFlip < 2) && (!isAlreadyMatched(id)) ) {
+      setFlippedCards([...flippedCards, {type, id}]);
     }
-  }, [selectedValue, animalData, animalLoading, animalError]);
-
-  useEffect(() => {
-    if (randomAnimal) {
-      useLazyQuery(QUERY_CHARC, {
-        variables: { id: randomAnimal._id },
-        onCompleted: (data) => {
-          if (data.findAnimal) {
-            setRandomCharacteristic(data.findAnimal);
-          }
-        },
-      });
-    }
-  }, [randomAnimal]);
-
-  const canFlip = flippedCards.length < 2;
-
-  const flipCard = (cardType) => {
-    if (canFlip) {
-      setFlippedCards([...flippedCards, cardType]);
-    }
-  };
-
-  useEffect(() => {
-    if (flippedCards.length === 2) {
-      const [firstCard, secondCard] = flippedCards;
-
-      if (
-        firstCard === "animal" &&
-        randomAnimal &&
-        secondCard === "characteristic" &&
-        randomCharacteristic &&
-        randomAnimal.name === randomCharacteristic.name
-      ) {
-        setMatchedCards([...matchedCards, firstCard, secondCard]);
-
-        if (matchedCards.length === selectedValue * 2) {
-          console.log("You've won!");
-        }
+    if (countBeforeFlip == 1) {
+      const firstFlipId = flippedCards[0].id
+      if (firstFlipId === id) // found a match
+      {
+        console.log("Found match")
+        setMatchedCards([...matchedCards, id]);
       }
-
-      setTimeout(() => {
-        setFlippedCards([]);
-      }, 1000);
     }
-  }, [
-    flippedCards,
-    matchedCards,
-    selectedValue,
-    randomAnimal,
-    randomCharacteristic,
-  ]);
 
-  const isCardHidden = (cardType) => {
-    return matchedCards.includes(cardType);
-  };
+  }, [flippedCards, matchedCards]);
+  const shouldShowFlipped = useCallback(({type, id}) => {
+    return flippedCards.some((flippedCard)=>{
+      return (type === flippedCard.type) && (id === flippedCard.id);
+    })
+   
+  }, [flippedCards]);
+
+
+  const handleNext = useCallback(()=>{
+    setFlippedCards([])
+  });
+
+  if (animalLoading){
+    return (<div>Loading</div>);
+  }
+
+  if (animalError){
+    return (<div>Error</div>);
+  }
+  let animalsToRender = null;
+  if (randomAnimals === null){
+    const remainingAnimals = [...animalData.animals];
+    const randomAnimalArray = [];
+    for (let i=0; i<selectedValue; i++)
+    {
+      const selectedIndex = Math.floor(Math.random() * remainingAnimals.length)
+      const randomAnimal = remainingAnimals[selectedIndex];
+      remainingAnimals.splice(selectedIndex, 1); //removes the animal so it is not used twice
+      randomAnimalArray.push(randomAnimal);
+    }
+
+    setRandomAnimals(randomAnimalArray);
+    animalsToRender = randomAnimalArray;
+  }
+  else {
+    animalsToRender = randomAnimals;
+  }
+
+
+  
+  const animalCards = animalsToRender.map((animal) => {
+    return (       
+    <AnimalCard
+      key={`animal-${animal._id}`}
+      animalName={animal.animal}
+      flipped={ shouldShowFlipped({type: 'animal', id:animal._id})}
+      success={ isAlreadyMatched(animal._id) }
+      onClick={() => flipCard({type:'animal', id:animal._id})}
+    />
+    );
+  });
+
+  const characteristicCards = animalsToRender.map((animal) => {
+    return (       
+    <CharacteristicCard
+      key={`characteristic-${animal._id}`}
+      animalId={animal._id}
+      flipped={ shouldShowFlipped({type: 'characteristic', id:animal._id})}
+      success={ isAlreadyMatched(animal._id)}
+      onClick={() => {
+        console.log("Flipping")
+        flipCard({type:'characteristic', id:animal._id})
+      }}
+    />
+    );
+  });
+
+  const allCards = animalCards.concat(characteristicCards);
+
+
+  const allCardsShuffled = allCards.map((value, index, array)=>{
+    return array[shuffleOrder[index]];
+
+  })
+  const startOfSecondHalf = Math.floor(allCardsShuffled.length/2);
+
+  const firstColumn = allCardsShuffled.slice(0,startOfSecondHalf);
+  const secondColumn = allCardsShuffled.slice(startOfSecondHalf, allCardsShuffled.length)
+
 
   return (
     <div>
@@ -99,28 +157,19 @@ export default function Concentration() {
         disappear, and you try again. You are working against the clock. See how
         fast you can match the different pairs.
       </p>
-      <div className="dropDown">
+      {/* <div className="dropDown">
         <DropdownMenu handleSelect={handleSelect} />
+      </div> */}
+      <button disabled={flippedCards.length <2} onClick={handleNext}>Next</button>
+      <div className="concentration-board">
+        <div className="concentration-board-column" >
+         {firstColumn}
+        </div>  
+        <div className="concentration-board-column" >
+         {secondColumn}
+        </div>
       </div>
-      <div className="cardContainer">
-        {selectedValue && (
-          <div className="pair">
-            <AnimalCard
-              animalName={randomAnimal ? randomAnimal.name : ""}
-              flipped={flippedCards.includes("animal")}
-              hidden={isCardHidden("animal")}
-              onClick={() => flipCard("animal")}
-            />
-            <CharacteristicsCard
-              animalChar={randomCharacteristic ? randomCharacteristic : ""}
-              flipped={flippedCards.includes("characteristic")}
-              hidden={isCardHidden("characteristic")}
-              onClick={() => flipCard("characteristic")}
-            />
-          </div>
-        )}
-      </div>
-      {matchedCards.length === selectedValue * 2 && (
+      {matchedCards.length === selectedValue && (
         <h2>You've Matched them All!</h2>
       )}
     </div>
