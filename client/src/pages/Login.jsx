@@ -32,6 +32,7 @@ const Login = () => {
 
   const handleAdultFormChange = (event) => {
     const { name, value } = event.target;
+    console.log(`Updating state for ${name} with value: ${value}`);
 
     setAdultFormState({
       ...adultFormState,

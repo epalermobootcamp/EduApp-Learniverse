@@ -36,7 +36,7 @@ const resolvers = {
   Mutation: {
     addAdult: async (
       parent,
-      { username, adultFirstName, adultLastName, email, password }
+      { username, email, password }
     ) => {
       const isUnique = await isUsernameUnique(username);
       if (!isUnique) {
@@ -44,8 +44,6 @@ const resolvers = {
       }
       const adult = await Adult.create({
         username,
-        adultFirstName,
-        adultLastName,
         email,
         password,
       });
