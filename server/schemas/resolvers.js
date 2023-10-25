@@ -38,6 +38,10 @@ const resolvers = {
       parent,
       { username, adultFirstName, adultLastName, email, password }
     ) => {
+      const isUnique = await isUsernameUnique(username);
+      if (!isUnique) {
+        throw new Error('Username is not unique.');
+      }
       const adult = await Adult.create({
         username,
         adultFirstName,
@@ -58,11 +62,6 @@ const resolvers = {
       const token = signToken(child);
       return { token, child };
     },
-    addUser: async (parent, { username }) => {
-      const user = await User.create({ username });
-      const token = signToken(user);
-      return { token, user };
-    },
     updateChild: async (parent, args, context) => {
       if (context.user) {
         return Child.findByIdAndUpdate(context.user.id, args, {
@@ -75,11 +74,6 @@ const resolvers = {
         return Adult.findByIdAndUpdate(context.user.id, args, {
           new: true,
         });
-      }
-    },
-    updateUser: async (parent, args, context) => {
-      if (context.user) {
-        return User.findByIdAndUpdate(context.user.id, args, { new: true });
       }
     },
     updateMathScore: async (parent, { newMathScore }, context) => {
