@@ -22,12 +22,6 @@ type Adult {
     children: [Child]
 }
 
-type User {
-    _id: ID
-    username: String
-    isParent: Boolean
-}
-
 type Auth {
     token: ID!
     adultProfile: Adult
@@ -94,12 +88,8 @@ input UpdateChildInput {
     age: Int
 }
 
-input UserInput {
-    username: String!
-    isAdult: Boolean!
-    id: String!
-}
- type Query {
+
+type Query {
     child(username: String!): Child
     words: [Language]
     adult(username: String!): Adult
@@ -111,10 +101,8 @@ input UserInput {
  type Mutation {
     addAdult(addAdultInput: AddAdultInput!): Auth
     addChild(addChildInput: AddChildInput!): Auth
-    addUser(userInput: UserInput!): User
     updateAdult(adultInput: UpdateAdultInput!): Adult
     updateChild(updateChildInput: UpdateChildInput!): Child
-    updateUser(userInput: UserInput!): User
     login(email: String!, password: String!): Auth
     updateMathScore(username: String!, newMathScore: Int!): Child
 } 
@@ -130,7 +118,6 @@ module.exports = typeDefs;
 //Query.animals = for animal game to query array of animals to render cards (filtered based on game settings)
 //!Query.score = I can't think of a reason for this one.
 
-//Mutation.addUser = to create user document when either type of account signs up to ensure ID uniqueness is inter-model.
 //Mutation.addParent = for parent account sign up
 //Mutation.addChild = for child account sign up
 //Mutation.updateParent = for parents to update their info

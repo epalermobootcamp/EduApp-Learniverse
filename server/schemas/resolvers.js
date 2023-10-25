@@ -1,4 +1,4 @@
-const { Adult, Child, User, Language, Animal, Score } = require("../models");
+const { Adult, Child, Language, Animal, Score } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 // Import the isUsernameUnique function from the utils folder
@@ -103,13 +103,21 @@ const resolvers = {
       }
     },
     login: async (parent, { username, password }) => {
-      // Look up the user by the provided email address. Since the `email` field is unique, we know that only one person will exist with that email
-      const user = await User.findOne({ username });
+      // Look up the user by the provided username.
+      const childUser = await Child.findOne({ username });
+      const adultUser = await Adult.findOne({ username });
       // If there is no user with that username, return an Authentication error stating so
-      if (!user) {
+      if (!childUser && !adultUser) {
         throw AuthenticationError;
       }
       // If there is a user found, execute the `isCorrectPassword` instance method and check if the correct password was provided
+      let user;
+      if (childUser) {
+        user = childUser;
+      } else {
+        user = adultUser;
+      }
+    
       const correctPw = await user.isCorrectPassword(password);
       // If the password is incorrect, return an Authentication error stating so
       if (!correctPw) {
