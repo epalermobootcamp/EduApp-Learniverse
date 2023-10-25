@@ -2,7 +2,7 @@ const { Adult, Child, Language, Animal, Score } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 // Import the isUsernameUnique function from the utils folder
-const isUsernameUnique = require("../utils/isUsernameUnique");
+const isUsernameUnique = require("../utils/uniqueUsername");
 
 const resolvers = {
   Query: {
