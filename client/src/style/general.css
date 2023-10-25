@@ -28,4 +28,37 @@
   flex: 1;
 }
 
+button {
+  border-color:#0094c6;
+  color:#0094c6;
+  border-radius: 5px;
+  padding: 20px;
+  margin:25px;
+}
+.math {
+  border-color: #0094c6;
+  background-color: whitesmoke;
+  color:#112fb1;
+  margin: 25px;
+}
 
+h3 {
+  margin:25px;
+}
+.conc {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login {
+  background-color: #0094c6;
+  color: whitesmoke;
+ 
+}

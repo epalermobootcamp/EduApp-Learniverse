@@ -147,20 +147,17 @@ export default function Concentration() {
 
   return (
     <div>
-      <h1>Animal Concentration</h1>
-      <h4>Instructions</h4>
-      <p>
-        Pick how many pairs of cards you would like to play with. Then click on
-        one card at a time. Your goal is to match the animal to its
-        characteristic. Example: you turn over a rabbit card, so you are looking
-        for a rabbit characteristic as your second card. If you match them, they
-        disappear, and you try again. You are working against the clock. See how
-        fast you can match the different pairs.
+      <h1 className="conc">Animal Concentration</h1>
+      <h4 className="conc">Instructions</h4>
+      <p className="conc">
+        Your goal is to match the animal to its characteristic. Example: you turn over a rabbit card, so you are looking
+        for a rabbit characteristic as your second card such as has fur. If you match them, they
+        show a checkmark. To take your next turn click "next" button. 
       </p>
       {/* <div className="dropDown">
         <DropdownMenu handleSelect={handleSelect} />
       </div> */}
-      <button disabled={flippedCards.length <2} onClick={handleNext}>Next</button>
+      <button className= "next" disabled={flippedCards.length <2} onClick={handleNext}>Next</button>
       <div className="concentration-board">
         <div className="concentration-board-column" >
          {firstColumn}
@@ -170,7 +167,7 @@ export default function Concentration() {
         </div>
       </div>
       {matchedCards.length === selectedValue && (
-        <h2>You've Matched them All!</h2>
+        <h2 className="conc">You've Matched them All!</h2>
       )}
     </div>
   );
