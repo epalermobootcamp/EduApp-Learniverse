@@ -72,8 +72,8 @@ const Login = () => {
       console.log(error)
       AuthService.login(data.addChild.token);
 
-      // Redirect to the homepage after successful signup
-      window.location.assign('/');
+      // Redirect to the profile page after successful signup
+      window.location.assign('/Profile');
     } catch (error) {
       console.error(error);
     }
@@ -95,8 +95,8 @@ const Login = () => {
       console.log(error)
       AuthService.login(data.addAdult.token);
 
-      // // Redirect to the homepage after successful signup
-      // window.location.assign('/');
+      // Redirect to the profile page after successful signup
+      window.location.assign('/Profile');
     } catch (error) {
       console.error(error);
     }
