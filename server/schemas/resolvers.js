@@ -31,7 +31,7 @@ const resolvers = {
     },
   },
   Mutation: {
-    addAdult: async (parent, { username, email, password }) => {
+    addAdult: async (parent, { username, adultFirstName, adultLastName, email, password }) => {
       // First we create the adult account
       const adult = await Adult.create({ username, email, password });
       // To reduce friction for the user, we immediately sign a JSON Web Token and log the user in after they are created
