@@ -38,12 +38,13 @@ type Language {
 }
 
 type Animal {
-    _id: ID
-    trophicLvl: String
-    habitat: String
-    class: String
-    locomotion: String
-    covering: String
+    _id: ID!
+    animal: String!
+    trophicLvl: String!
+    habitat: String!
+    class: String!
+    locomotion: String!
+    covering: String!
 }
 
 type Score {
