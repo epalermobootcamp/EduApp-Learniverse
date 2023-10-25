@@ -64,6 +64,8 @@ type Score {
 
 input AddAdultInput {
     username: String!
+    adultFirstName: String!
+    adultLastName: String!
     email: String!
     password: String!
 }
