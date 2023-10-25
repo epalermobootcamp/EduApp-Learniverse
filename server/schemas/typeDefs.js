@@ -62,13 +62,10 @@ type Score {
     last10LangScores: Int
 }
 
-input AdultInput {
+input AddAdultInput {
     username: String!
-    adultFirstName: String!
-    adultLastName: String!
     email: String!
     password: String!
-    subscribed: Boolean!
 }
 
 input UpdateAdultInput {
@@ -110,7 +107,7 @@ input UserInput {
  }
 
  type Mutation {
-    addAdult(adultInput: AdultInput!): Auth
+    addAdult(addAdultInput: AddAdultInput!): Auth
     addChild(addChildInput: AddChildInput!): Auth
     addUser(userInput: UserInput!): User
     updateAdult(adultInput: UpdateAdultInput!): Adult

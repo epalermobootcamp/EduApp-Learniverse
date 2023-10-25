@@ -94,14 +94,14 @@ const resolvers = {
         throw new Error(`Failed to update math score: ${error.message}`);
       }
     },
-    login: async (parent, { email, password }) => {
+    login: async (parent, { username, password }) => {
       // Look up the user by the provided email address. Since the `email` field is unique, we know that only one person will exist with that email
-      const user = await User.findOne({ email });
-      // If there is no user with that email address, return an Authentication error stating so
+      const user = await User.findOne({ username });
+      // If there is no user with that username, return an Authentication error stating so
       if (!user) {
         throw AuthenticationError;
       }
-      // If there is a user found, execute the `isCorrectPassword` instance method and check if the correct password was pro
+      // If there is a user found, execute the `isCorrectPassword` instance method and check if the correct password was provided
       const correctPw = await user.isCorrectPassword(password);
       // If the password is incorrect, return an Authentication error stating so
       if (!correctPw) {
