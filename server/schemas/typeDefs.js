@@ -85,11 +85,11 @@ input AddChildInput {
 }
 
 input UpdateChildInput {
-    username: String!
+    username: String
     firstName: String
     lastName: String
     email: String
-    password: String!
+    password: String
     grade: Int
     age: Int
 }
