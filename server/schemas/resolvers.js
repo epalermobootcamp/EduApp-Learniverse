@@ -1,6 +1,9 @@
 const { Adult, Child, User, Language, Animal, Score } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
+// Import the isUsernameUnique function from the utils folder
+const isUsernameUnique = require("../utils/isUsernameUnique");
+
 const resolvers = {
   Query: {
     adult: async (parent, args, context) => {
@@ -12,12 +15,12 @@ const resolvers = {
 
     child: async (parent, args, context) => {
       if (context.args.username) {
-        return Child.findOne({ _id: context.user._id })
+        return Child.findOne({ _id: context.user._id });
       }
       throw AuthenticationError;
     },
     score: async (parent, args) => {
-      return Child.findOne({ username })
+      return Child.findOne({ username });
     },
     words: async (parent, { letterCount }) => {
       return Language.find(params).sort({ letterCount: 1, word: 1 });
@@ -26,26 +29,37 @@ const resolvers = {
       return Animal.find();
     },
     findAnimal: async (parent, args) => {
-      console.log (args._id)
+      console.log(args._id);
       return Animal.findById(args._id);
     },
   },
   Mutation: {
-    addAdult: async (parent, { username, adultFirstName, adultLastName, email, password }) => {
-      // First we create the adult account
-      const adult = await Adult.create({ username, adultFirstName, adultLastName, email, password });
-      // To reduce friction for the user, we immediately sign a JSON Web Token and log the user in after they are created
+    addAdult: async (
+      parent,
+      { username, adultFirstName, adultLastName, email, password }
+    ) => {
+      const adult = await Adult.create({
+        username,
+        adultFirstName,
+        adultLastName,
+        email,
+        password,
+      });
       const token = signToken(adult);
-      // Return an `Auth` object that consists of the signed token and user's information
       return { token, adult };
     },
     addChild: async (parent, { username, password }) => {
+      // Check if the username is unique using the imported function
+      const isUnique = await isUsernameUnique(username);
+      if (!isUnique) {
+        throw new Error('Username is not unique.');
+      }
       const child = await Child.create({ username, password });
       const token = signToken(child);
-      return { token, user };
+      return { token, child };
     },
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, { username }) => {
+      const user = await User.create({ username });
       const token = signToken(user);
       return { token, user };
     },
@@ -74,7 +88,7 @@ const resolvers = {
           throw new Error("User not authenticated");
         }
 
-        const { username } = context.user; 
+        const { username } = context.user;
 
         // Find the child by username
         const child = await Child.findOne({ username });
