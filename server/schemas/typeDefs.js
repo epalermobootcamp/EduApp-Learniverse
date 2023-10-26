@@ -102,7 +102,7 @@ type Query {
     addChild(addChildInput: AddChildInput!): Auth
     updateAdult(adultInput: UpdateAdultInput!): Adult
     updateChild(updateChildInput: UpdateChildInput!): Child
-    login(email: String!, password: String!): Auth
+    login(username: String!, password: String!): Auth
     updateMathScore(username: String!, newMathScore: Int!): Child
 } 
 `;

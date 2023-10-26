@@ -14,6 +14,8 @@ mutation AddAdult($addAdultInput: AddAdultInput!) {
 }
 `;
 
+//! Dont return passwords to the client.
+
 // Mutation to add a child
 export const ADD_CHILD = gql`
 mutation AddChild($addChildInput: AddChildInput!) {
@@ -32,7 +34,11 @@ export const LOGIN_USER = gql`
   mutation login($username: String!, $password: String!) {
     login(username: $username, password: $password) {
       token
-      user {
+      childProfile {
+        _id
+        username
+      }
+      adultProfile {
         _id
         username
       }
