@@ -54,7 +54,7 @@ const resolvers = {
 
       // console.log("Add adult 4.", adult)
       const token = signToken(adult);
-      return { token, adultProfile: adult }; //!adultPrfile: adult
+      return { token, adultProfile: adult }; //!adultProfile must match Auth key.
     },
     addChild: async (parent, { addChildInput }) => {
       let { username, password } = addChildInput;

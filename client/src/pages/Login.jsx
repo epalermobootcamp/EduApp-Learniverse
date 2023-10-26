@@ -42,12 +42,12 @@ const Login = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    console.log(loginFormState)
+    console.log("State: ", loginFormState)
     try {
       const { data } = await login({
-        variables: { ...loginFormState },
+        variables: { ...loginFormState } 
       });
-
+      console.log("Data: ", data)
       AuthService.login(data.login.token);
 
       // Redirect to the homepage after successful login
@@ -67,13 +67,13 @@ const Login = () => {
     try {
       console.log("Before addChild mutation");
       const { data, error } = await addChild({
-        variables: { addChildInput: childFormState },
+        variables: { addChildInput: childFormState }, //! Key name must match typeDef.
       });
       console.log(error)
       AuthService.login(data.addChild.token);
 
       // Redirect to the profile page after successful signup
-      window.location.assign('/Profile');
+      window.location.assign('/');
     } catch (error) {
       console.error(error);
     }
@@ -90,13 +90,13 @@ const Login = () => {
     try {
       console.log("Before addAdult mutation");
       const { data, error } = await addAdult({
-        variables: { addAdultInput: adultFormState }, //!
+        variables: { addAdultInput: adultFormState }, //! Key name must match typeDef.
       });
       console.log(error)
       AuthService.login(data.addAdult.token);
 
       // Redirect to the profile page after successful signup
-      window.location.assign('/Profile');
+      window.location.assign('/');
     } catch (error) {
       console.error(error);
     }
